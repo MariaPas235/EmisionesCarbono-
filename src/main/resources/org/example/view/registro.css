@@ -1,0 +1,24 @@
+.button {
+    -fx-background-color: linear-gradient(#6DBE45, #498B3A); /* Gradiente verde */
+    -fx-text-fill: white; /* Texto blanco */
+    -fx-font-size: 14px; /* Tamaño de fuente */
+    -fx-font-weight: bold; /* Negrita */
+    -fx-padding: 10 20; /* Relleno */
+    -fx-background-radius: 10; /* Bordes redondeados */
+    -fx-border-radius: 10; /* Bordes del contorno */
+    -fx-border-color: #4E8C3A; /* Contorno verde oscuro */
+    -fx-border-width: 2px; /* Grosor del borde */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 5, 0.2, 0, 2); /* Sombra */
+}
+
+.button:hover {
+    -fx-background-color: linear-gradient(#8CDC69, #5C9F4A); /* Color más claro al pasar el ratón */
+    -fx-border-color: #6DBE45; /* Bordes más claros */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 8, 0.2, 0, 4); /* Sombra más pronunciada */
+}
+
+.button:pressed {
+    -fx-background-color: linear-gradient(#498B3A, #6DBE45); /* Invertir gradiente al presionar */
+    -fx-effect: none; /* Sin sombra al presionar */
+    -fx-translate-y: 2px; /* Simula un "clic" bajando ligeramente el botón */
+}
