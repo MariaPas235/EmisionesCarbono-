@@ -36,10 +36,10 @@
             <Font size="30.0" />
          </font>
       </Text>
-      <TextField fx:id="fecha" editable="false" layoutX="1486.0" layoutY="572.0" prefHeight="40.0" prefWidth="149.0" />
-      <TextField fx:id="unidad" editable="false" layoutX="1112.0" layoutY="572.0" prefHeight="40.0" prefWidth="149.0" />
+      <TextField fx:id="fecha" editable="false" layoutX="1486.0" layoutY="572.0" onAction="#ImprimirFechaHoy" prefHeight="40.0" prefWidth="149.0" />
+      <TextField fx:id="unidad" editable="false" layoutX="1112.0" layoutY="572.0" onMouseClicked="#CategoríaCompleta" prefHeight="40.0" prefWidth="149.0" />
       <TextField fx:id="valor" layoutX="745.0" layoutY="572.0" prefHeight="40.0" prefWidth="149.0" />
       <ChoiceBox fx:id="actividades" layoutX="267.0" layoutY="572.0" prefHeight="40.0" prefWidth="335.0" />
-      <Button layoutX="894.0" layoutY="800.0" mnemonicParsing="false" text="Añadir" />
+      <Button fx:id="registrar" layoutX="894.0" layoutY="800.0" mnemonicParsing="false" onAction="#ActividadCompleta" text="Añadir" />
    </children>
 </AnchorPane>

@@ -17,4 +17,15 @@ public class ActividadDAO {
         actividades = query.list();
         return actividades;
     }
+
+    public Actividad traerActividadPorNombre(String nombre) {
+        Connection conn = Connection.getInstance();
+        Session session = conn.openSession();
+        Actividad actividad = null;
+        String hql = "FROM Actividad WHERE nombre = :nombre";
+        Query <Actividad> query = session.createQuery(hql, Actividad.class);
+        query.setParameter("nombre", nombre);
+        actividad = query.uniqueResult();
+        return actividad;
+    }
 }

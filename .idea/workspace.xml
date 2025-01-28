@@ -6,24 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="dd016665-ba96-443c-9bd5-174b4ff32788" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DAO/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/DAO/UserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Model/Actividad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Model/Actividad.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Services/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Utils/Session.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Utils/Session.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/View/IniciarSesionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/View/IniciarSesionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/View/RegistroController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/View/RegistroController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/View/Scenes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/View/Scenes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/view/IniciarSesion.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/view/IniciarSesion.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/view/registro.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/view/registro.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/DAO/UserDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/DAO/UserDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Model/Actividad.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Model/Actividad.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Model/Usuario.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Model/Usuario.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Services/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Services/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Utils/Session.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Utils/Session.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/View/RegistroController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/View/RegistroController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/View/Scenes.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/View/Scenes.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/View/registro.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/View/registro.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/View/secondary.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DAO/ActividadDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/DAO/ActividadDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DAO/HuellaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/DAO/HuellaDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Model/Categoria.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Model/Categoria.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Model/Recomendacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Model/Recomendacion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Services/ActividadServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Services/ActividadServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/View/RegistrarHuellasController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/View/RegistrarHuellasController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/view/RegistrarHuellas.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/view/RegistrarHuellas.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,7 +108,9 @@
       <workItem from="1737891618006" duration="3384000" />
       <workItem from="1737900836973" duration="5950000" />
       <workItem from="1737984831779" duration="5852000" />
-      <workItem from="1738050107011" duration="383000" />
+      <workItem from="1738050107011" duration="3832000" />
+      <workItem from="1738066115634" duration="3311000" />
+      <workItem from="1738076326715" duration="6197000" />
     </task>
     <servers />
   </component>

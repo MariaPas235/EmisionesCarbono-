@@ -20,13 +20,13 @@
             <artifactId>javafx-fxml</artifactId>
             <version>13</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.hibernate.orm/hibernate-core -->
+
         <dependency>
             <groupId>org.hibernate.orm</groupId>
             <artifactId>hibernate-core</artifactId>
             <version>6.6.3.Final</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -49,8 +49,7 @@
                 <version>0.0.6</version>
                 <executions>
                     <execution>
-                        <!-- Default configuration for running -->
-                        <!-- Usage: mvn clean javafx:run -->
+
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>org.example.App</mainClass>
