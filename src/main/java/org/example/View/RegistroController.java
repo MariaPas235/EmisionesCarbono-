@@ -10,6 +10,7 @@ import javafx.scene.shape.CubicCurveTo;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
 import javafx.util.Duration;
+import org.example.App;
 import org.example.Model.Usuario;
 import org.example.Services.UserService;
 
@@ -30,6 +31,8 @@ public class RegistroController extends Controller implements Initializable {
     private TextField contraseña;
     @FXML
     private Button registrar;
+    @FXML
+    private Button IrAInicioSesion;
 
     public Usuario recogerDatos (){
         String nombreUser = nombre.getText();
@@ -40,11 +43,11 @@ public class RegistroController extends Controller implements Initializable {
     }
 
     @FXML
-    public void regitrarUsuario (){
+    public void regitrarUsuario () throws IOException {
         Usuario usuario = recogerDatos();
         UserService userService = new UserService();
         if (userService.register(usuario)){
-            //change Scene
+            App.currentController.changeScene(Scenes.INICIOSESION,null);
             System.out.println("usuario registrado" + usuario);
         }else {
             System.out.println("El usuario ya existe");
@@ -53,6 +56,11 @@ public class RegistroController extends Controller implements Initializable {
 
 
 
+    }
+
+    @FXML
+    public void irAInicioSesion () throws IOException {
+        App.currentController.changeScene(Scenes.INICIOSESION,null);
     }
 
 

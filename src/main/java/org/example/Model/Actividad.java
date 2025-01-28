@@ -66,4 +66,14 @@ public class Actividad {
         this.huellas = huellas;
     }
 
+    @Override
+    public String toString() {
+        return "Actividad{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", idCategoria=" + idCategoria +
+                ", habitos=" + habitos +
+                ", huellas=" + huellas +
+                '}';
+    }
 }

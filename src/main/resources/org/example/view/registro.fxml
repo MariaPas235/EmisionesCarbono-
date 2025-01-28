@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -16,7 +17,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="@registro.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.View.RegistroController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="1093.0" layoutX="-3.0" layoutY="-7.0" stroke="BLACK" strokeType="INSIDE" width="1927.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="1093.0" layoutX="30.0" layoutY="-13.0" stroke="BLACK" strokeType="INSIDE" width="1927.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0" startX="1.0">
                <stops>
@@ -40,12 +41,12 @@
                <stops>
                   <Stop>
                      <color>
-                        <Color red="0.8461201786994934" green="0.9200000166893005" blue="0.1103999987244606" />
+                        <Color red="0.8470588326454163" green="0.9215686321258545" blue="0.10980392247438431" />
                      </color>
                   </Stop>
                   <Stop offset="1.0">
                      <color>
-                        <Color red="1.0" green="0.7055513262748718" blue="0.11999999731779099" />
+                        <Color red="1.0" green="0.7058823704719543" blue="0.12156862765550613" />
                      </color>
                   </Stop>
                </stops>
@@ -77,9 +78,25 @@
             <Image url="@pajaro-removebg-preview.png" />
          </image>
       </ImageView>
-      <TextField fx:id="nombre" layoutX="540.0" layoutY="439.0" prefHeight="39.0" prefWidth="230.0" promptText="Nombre" />
-      <TextField fx:id="email" layoutX="540.0" layoutY="534.0" prefHeight="39.0" prefWidth="230.0" promptText="Email" />
-      <TextField fx:id="contraseña" layoutX="540.0" layoutY="633.0" prefHeight="39.0" prefWidth="230.0" promptText="Contraseña" />
-      <Button fx:id="registrar" layoutX="568.0" layoutY="748.0" mnemonicParsing="false" onAction="#regitrarUsuario" prefHeight="41.0" prefWidth="183.0" text="Registrarse" />
+      <TextField fx:id="nombre" layoutX="540.0" layoutY="397.0" prefHeight="39.0" prefWidth="230.0" promptText="Nombre" />
+      <TextField fx:id="email" layoutX="540.0" layoutY="494.0" prefHeight="39.0" prefWidth="230.0" promptText="Email" />
+      <TextField fx:id="contraseña" layoutX="540.0" layoutY="583.0" prefHeight="39.0" prefWidth="230.0" promptText="Contraseña" />
+      <Button fx:id="registrar" layoutX="563.0" layoutY="673.0" mnemonicParsing="false" onAction="#regitrarUsuario" prefHeight="41.0" prefWidth="183.0" text="Registrarse">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Text layoutX="540.0" layoutY="776.0" strokeType="OUTSIDE" strokeWidth="0.0" text="¿Ya tienes cuenta? " wrappingWidth="143.4000244140625">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text fill="#1b21c9" layoutX="683.0" layoutY="775.0" onMouseClicked="#irAInicioSesion" strokeType="OUTSIDE" strokeWidth="0.0" text="Inicia Sesión">
+         <font>
+            <Font size="15.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Text>
    </children>
 </AnchorPane>

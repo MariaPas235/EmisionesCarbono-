@@ -27,6 +27,13 @@ public class UserDAO {
         Usuario usuario = (Usuario) query.uniqueResult();
         session.close();
         return usuario;
-
+    }
+    public void actualizarUser(Usuario user) {
+        Connection conn = Connection.getInstance();
+        Session session = conn.openSession();
+        session.beginTransaction();
+        session.update(user);
+        session.getTransaction().commit();
+        session.close();
     }
 }
