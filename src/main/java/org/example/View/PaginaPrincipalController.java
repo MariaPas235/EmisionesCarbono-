@@ -15,6 +15,8 @@ public class PaginaPrincipalController extends Controller implements Initializab
     private Button RegistrarHuellas;
     @FXML
     private ImageView perfilUsuario;
+    @FXML
+    private Button misHuellas;
 
     @FXML
     public void irARegistrarHuellas() throws IOException {
@@ -25,6 +27,12 @@ public class PaginaPrincipalController extends Controller implements Initializab
     public void irAPerfilUsuario() throws IOException {
         App.currentController.changeScene(Scenes.PERFILUSUARIO,null);
     }
+
+    @FXML
+    public void irAMisHuellas() throws IOException {
+        App.currentController.changeScene(Scenes.MISHUELLAS,null);
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 

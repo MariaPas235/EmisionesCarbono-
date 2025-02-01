@@ -6,7 +6,7 @@ module org.example {
     requires org.hibernate.orm.core;
 
     opens org.example to javafx.fxml;
-    opens org.example.Model to org.hibernate.orm.core; // Abre el paquete org.example.Model para Hibernate
+    opens org.example.Model to javafx.base, org.hibernate.orm.core; // Habilitar acceso para JavaFX y Hibernate
 
     exports org.example;
     exports org.example.View;

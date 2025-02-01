@@ -6,10 +6,8 @@ public enum Scenes {
     INICIOSESION("/org/example/view/IniciarSesion.fxml"),
     PAGINAPRINCIPAL("/org/example/view/PaginaPrincipal.fxml"),
     PERFILUSUARIO("/org/example/view/PerfilUsuario.fxml"),
-    REGISTRARHUELLAS("/org/example/view/RegistrarHuellas.fxml");
-
-
-
+    REGISTRARHUELLAS("/org/example/view/RegistrarHuellas.fxml"),
+    MISHUELLAS("/org/example/view/MostrarHuellas.fxml");
 
 
     private String url;

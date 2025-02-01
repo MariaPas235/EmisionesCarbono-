@@ -4,14 +4,22 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import org.example.App;
+import org.example.DAO.HuellaDAO;
 import org.example.Model.Actividad;
 import org.example.Model.Categoria;
+import org.example.Model.Huella;
 import org.example.Services.ActividadServices;
 import org.example.Services.CategoríaServices;
+import org.example.Services.HuellaService;
+import org.example.Utils.Session;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.net.URL;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +33,7 @@ public class RegistrarHuellasController extends Controller implements Initializa
     @FXML
     private TextField unidad;
     @FXML
-    private TextField fecha;
+    private DatePicker fecha;
     @FXML
     private Button registrar;
 
@@ -68,16 +76,67 @@ public class RegistrarHuellasController extends Controller implements Initializa
         unidad.setText(categoriaCompleta.getUnidad());
     }
 
-    @FXML
-    public void ImprimirFechaHoy(){
-        fecha.setText(LocalDate.now().toString());
+    public Huella recogerTodosDatos() {
+        Huella huella = new Huella();
+        HuellaService huellaService = new HuellaService();
+        huella.setIdUsuario(Session.getInstancia().getUsuarioIniciado());
+        huella.setIdActividad(ActividadCompleta());
+        huella.setUnidad(unidad.getText());
+        huella.setFecha(fecha.getValue());
+
+        try {
+            // Intentamos verificar si el valor es un número y asignarlo a la huella
+            if (HuellaService.esSoloNumeros(new BigDecimal(valor.getText()))) {
+                huella.setValor(new BigDecimal(valor.getText()));
+                System.out.println(huella);
+                return huella;
+            } else {
+                // Si no es un número válido, manejar el caso
+                System.out.println("El valor ingresado no es un número válido.");
+                return null;  // O devolver algo que indique error, como un objeto nulo
+            }
+        } catch (NumberFormatException e) {
+            // Capturamos la excepción si ocurre un error al convertir el valor
+            System.out.println("Error al convertir el valor: " + e.getMessage());
+            return null;  // O devolver algo que indique error, como un objeto nulo
+        }
     }
+
+
+    @FXML
+    public void añadirHuella() throws IOException {
+        HuellaService huellaService = new HuellaService();
+        Huella huellaAGuardar = recogerTodosDatos();
+
+        // Verificamos si recogerTodosDatos devolvió null, lo que indica un error
+        if (huellaAGuardar == null) {
+            // Mostrar mensaje de error o notificación al usuario
+            System.out.println("No se pudo guardar la huella, los datos son inválidos.");
+            return; // Salimos del método si los datos son inválidos
+        }
+
+        // Intentamos guardar la huella
+        if (huellaService.addHuella(huellaAGuardar)) {
+            // Si la huella se guarda correctamente, cambiamos a la página principal
+            App.currentController.changeScene(Scenes.PAGINAPRINCIPAL, null);
+        } else {
+            // Si ocurre un error al guardar la huella, mostramos un mensaje de error
+            System.out.println("Error al guardar la huella.");
+        }
+    }
+
+    @FXML
+    public void limpiarUnidad(){
+        unidad.clear();
+    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setearActividades();
-        ImprimirFechaHoy();
     }
+
+
 
 
 

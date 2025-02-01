@@ -13,11 +13,11 @@ public class Huella {
     @Column(name = "id_registro", nullable = false)
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_usuario")
     private org.example.Model.Usuario idUsuario;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_actividad")
     private Actividad idActividad;
 
@@ -78,4 +78,13 @@ public class Huella {
         this.fecha = fecha;
     }
 
+    @Override
+    public String toString() {
+        return "Huella{" +
+                "id=" + id +
+                ", valor=" + valor +
+                ", unidad='" + unidad + '\'' +
+                ", fecha=" + fecha +
+                '}';
+    }
 }

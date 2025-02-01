@@ -6,15 +6,25 @@
   <component name="ChangeListManager">
     <list default="true" id="dd016665-ba96-443c-9bd5-174b4ff32788" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DAO/ActividadDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/DAO/ActividadDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DAO/HuellaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/DAO/HuellaDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Model/Categoria.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Model/Categoria.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Model/Recomendacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Model/Recomendacion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Services/ActividadServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Services/ActividadServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Model/Huella.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Model/Huella.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Services/HuellaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Services/HuellaService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/View/PaginaPrincipalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/View/PaginaPrincipalController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/View/RegistrarHuellasController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/View/RegistrarHuellasController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/View/Scenes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/View/Scenes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/view/PaginaPrincipal.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/view/PaginaPrincipal.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/view/RegistrarHuellas.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/view/RegistrarHuellas.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/DAO/HuellaDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/DAO/HuellaDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Model/Huella.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Model/Huella.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Services/HuellaService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Services/HuellaService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/View/PaginaPrincipal.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/View/PaginaPrincipal.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/View/PaginaPrincipalController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/View/PaginaPrincipalController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/View/RegistrarHuellas.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/View/RegistrarHuellas.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/View/RegistrarHuellasController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/View/RegistrarHuellasController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/View/Scenes.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/View/Scenes.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +63,7 @@
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/maria/IdeaProjects/Carbono/src/main/resources/org/example/view&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/maria/AppData/Local/SceneBuilder/SceneBuilder.exe&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -110,7 +120,10 @@
       <workItem from="1737984831779" duration="5852000" />
       <workItem from="1738050107011" duration="3832000" />
       <workItem from="1738066115634" duration="3311000" />
-      <workItem from="1738076326715" duration="6197000" />
+      <workItem from="1738076326715" duration="7116000" />
+      <workItem from="1738176135848" duration="3910000" />
+      <workItem from="1738223756742" duration="4446000" />
+      <workItem from="1738235817056" duration="2124000" />
     </task>
     <servers />
   </component>
