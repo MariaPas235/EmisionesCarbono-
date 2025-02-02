@@ -6,6 +6,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.util.converter.BigDecimalStringConverter;
 import org.example.DAO.ActividadDAO;
 import org.example.Model.Actividad;
 import org.example.Model.Huella;
@@ -46,8 +48,33 @@ public class MostrarHuellasController extends Controller  implements Initializab
             Actividad actividad = actividadDAO.traerActividadPorID(huella);
             return new SimpleStringProperty(actividad != null ? actividad.getNombre() : "Actividad no disponible");
         });
+
         List<Huella> huellas = huellaService.listarHuellas(Session.getInstancia().getUsuarioIniciado());
         huellaTable.getItems().setAll(huellas);
+        configurarTableView();
+    }
+
+    private void configurarTableView(){
+        valor.setCellFactory(TextFieldTableCell.forTableColumn(new BigDecimalStringConverter()));
+        valor.setOnEditCommit(event -> {
+            Huella huella = event.getRowValue();
+            try {
+                BigDecimal nuevoValor = new BigDecimal(event.getNewValue().toString());
+                huella.setValor(nuevoValor);
+                HuellaService.actualizarHuella(huella);
+                /*
+                try {
+                    changescenetoPantallaPrincipal();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                 */
+                System.out.println("Valor actualizado a: " + nuevoValor);
+            } catch (NumberFormatException e) {
+                System.out.println("Error al convertir el valor a BigDecimal: " + event.getNewValue());
+            }
+        });
     }
 
     @Override

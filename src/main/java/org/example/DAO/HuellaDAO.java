@@ -29,4 +29,13 @@ public class HuellaDAO {
         huellas= query.list();
         return huellas;
     }
+
+    public void actualizarHuella(Huella huella) {
+        Connection conn = Connection.getInstance();
+        Session session = conn.openSession();
+        session.beginTransaction();
+        session.merge(huella);
+        session.getTransaction().commit();
+        session.close();
+    }
 }

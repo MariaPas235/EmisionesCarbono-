@@ -17,6 +17,20 @@ public class PaginaPrincipalController extends Controller implements Initializab
     private ImageView perfilUsuario;
     @FXML
     private Button misHuellas;
+    @FXML
+    private Button RegistrarHabito;
+    @FXML
+    private Button misHabitos;
+
+    @FXML
+    public void irARegistrarHabitos() throws IOException {
+        App.currentController.changeScene(Scenes.RESGISTRARHABITOS,null);
+    }
+
+    @FXML
+    public void irAMisHabitos() throws IOException {
+        App.currentController.changeScene(Scenes.MISHABITOS,null);
+    }
 
     @FXML
     public void irARegistrarHuellas() throws IOException {

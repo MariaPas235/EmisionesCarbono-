@@ -23,5 +23,15 @@
             <Font size="21.0" />
          </font>
       </Button>
+      <Button fx:id="RegistrarHabito" layoutX="981.0" layoutY="527.0" mnemonicParsing="false" onAction="#irARegistrarHabitos" prefHeight="48.0" prefWidth="198.0" style="-fx-background-color: #186b2a;" text="Registrar hábitos" textFill="WHITE">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Button>
+      <Button fx:id="misHabitos" layoutX="981.0" layoutY="615.0" mnemonicParsing="false" onAction="#irAMisHabitos" prefHeight="48.0" prefWidth="198.0" style="-fx-background-color: #186b2a;" text="Mis Hábitos" textFill="WHITE">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

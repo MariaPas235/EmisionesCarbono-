@@ -6,7 +6,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.View.MostrarHuellasController">
    <children>
-      <TableView fx:id="huellaTable" layoutX="284.0" layoutY="222.0" prefHeight="624.0" prefWidth="1093.0">
+      <TableView fx:id="huellaTable" editable="true" layoutX="284.0" layoutY="222.0" prefHeight="624.0" prefWidth="1093.0">
         <columns>
           <TableColumn fx:id="ActividadNombre" prefWidth="460.0" text="Actividad" />
           <TableColumn fx:id="valor" prefWidth="208.7999267578125" text="Valor" />

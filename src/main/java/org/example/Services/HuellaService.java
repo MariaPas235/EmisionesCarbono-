@@ -46,6 +46,12 @@ public class HuellaService {
                return null;
            }
            return huellas;
-        }
+    }
+
+    public static void actualizarHuella(Huella huella) {
+        HuellaDAO huellaDAO = new HuellaDAO();
+         huellaDAO.actualizarHuella(huella);
+    }
+
 
 }
