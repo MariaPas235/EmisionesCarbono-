@@ -3,10 +3,13 @@ package org.example.View;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import org.example.DAO.ActividadDAO;
 import org.example.DAO.HabitoDAO;
 import org.example.Model.Actividad;
@@ -55,21 +58,57 @@ public class MostrarHabitosController extends Controller implements Initializabl
                     setText(empty || item == null ? null : item.format(formatter));
                 }
             });
+
             ActividadNombre.setCellValueFactory(cellData -> {
                 Habito habito = cellData.getValue();
                 Actividad actividad = actividadDAO.traerActividadPorIDHabito(habito);
                 return new SimpleStringProperty(actividad != null ? actividad.getNombre() : "Actividad no disponible");
             });
 
-        List<Habito> habito = habitoServices.listarHabitos(Session.getInstancia().getUsuarioIniciado());
-        habitoView.getItems().setAll(habito);
-        for (Habito habitos : habito){
-            System.out.printf(habitos.toString());
+            TableColumn<Habito, Void> colEliminar = new TableColumn<>("Eliminar");
+            colEliminar.setCellFactory(param -> new TableCell<>() {
+                private final Button btnEliminar = new Button();
+                private final ImageView iconoPapelera;
+
+                {
+                    iconoPapelera = new ImageView(new Image(getClass().getResource("/org/example/view/papelera.png").toExternalForm()));
+                    iconoPapelera.setFitWidth(16);
+                    iconoPapelera.setFitHeight(16);
+                    btnEliminar.setGraphic(iconoPapelera);
+                    btnEliminar.setStyle("-fx-background-color: red; -fx-text-fill: white;");
+
+                    btnEliminar.setOnAction(event -> {
+                        Habito habitoSeleccionado = getTableView().getItems().get(getIndex());
+                        if (habitoSeleccionado != null) {
+                            // Elimina el hábito de la base de datos
+                            boolean eliminado = habitoServices.eliminarHabito(habitoSeleccionado);
+                            if (eliminado) {
+                                getTableView().getItems().remove(habitoSeleccionado);
+                                System.out.println("Hábito eliminado correctamente de la base de datos.");
+                            } else {
+                                System.out.println("No se pudo eliminar el hábito.");
+                            }
+                        }
+                    });
+                }
+
+                @Override
+                protected void updateItem(Void item, boolean empty) {
+                    super.updateItem(item, empty);
+                    setGraphic(empty ? null : btnEliminar);
+                }
+            });
+
+            habitoView.getColumns().add(colEliminar);
+
+            List<Habito> habitos = habitoServices.listarHabitos(Session.getInstancia().getUsuarioIniciado());
+            habitoView.getItems().setAll(habitos);
+
+            for (Habito habito : habitos) {
+                System.out.printf(habito.toString());
+            }
+
         }
-
-    }
-
-
 
     @Override
     public void onOpen(Object input) throws IOException {

@@ -84,7 +84,6 @@ public class Categoria {
                 ", nombre='" + nombre + '\'' +
                 ", factorEmision=" + factorEmision +
                 ", unidad='" + unidad + '\'' +
-                ", recomendacions=" + recomendacions +
                 '}';
     }
 }

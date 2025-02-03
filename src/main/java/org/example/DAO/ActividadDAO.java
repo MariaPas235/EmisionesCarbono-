@@ -17,6 +17,7 @@ public class ActividadDAO {
         String hql = "FROM Actividad";
         Query <Actividad> query = session.createQuery(hql, Actividad.class);
         actividades = query.list();
+        session.close();
         return actividades;
     }
 
@@ -28,6 +29,7 @@ public class ActividadDAO {
         Query <Actividad> query = session.createQuery(hql, Actividad.class);
         query.setParameter("nombre", nombre);
         actividad = query.uniqueResult();
+
         return actividad;
     }
 
@@ -38,6 +40,7 @@ public class ActividadDAO {
         Query query = session.createQuery(hql, Actividad.class);
         query.setParameter("id", huella.getIdActividad().getId());
         Actividad actividad = (Actividad) query.uniqueResult();
+
         return actividad;
     }
 
@@ -48,6 +51,7 @@ public class ActividadDAO {
         Query query = session.createQuery(hql, Actividad.class);
         query.setParameter("idActividad", habito.getIdActividad().getId());
         Actividad actividad = (Actividad) query.uniqueResult();
+
         return actividad;
     }
 

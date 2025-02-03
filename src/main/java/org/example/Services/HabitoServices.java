@@ -46,4 +46,14 @@ public class HabitoServices {
         }
         return habitos;
     }
+    public boolean eliminarHabito(Habito habito) {
+        if (habito == null ) {
+            System.out.println("Hábito inválido para eliminar.");
+            return false;
+        }else {
+            habitoDAO.eliminarHabito(habito);
+            System.out.println("Habito eliminado exitosamente");
+            return true;
+        }
+    }
 }

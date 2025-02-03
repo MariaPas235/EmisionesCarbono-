@@ -15,6 +15,7 @@ public class CategoriaDAO {
         Query<Categoria> query = session.createQuery(hql, Categoria.class);
         query.setParameter("id", id);
         categoria = query.uniqueResult();
+        session.close();
         return categoria;
     }
 }

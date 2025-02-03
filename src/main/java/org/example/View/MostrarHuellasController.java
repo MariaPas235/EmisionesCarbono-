@@ -3,10 +3,14 @@ package org.example.View;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.util.converter.BigDecimalStringConverter;
 import org.example.DAO.ActividadDAO;
 import org.example.Model.Actividad;
@@ -43,19 +47,62 @@ public class MostrarHuellasController extends Controller  implements Initializab
         valor.setCellValueFactory(new PropertyValueFactory<>("valor"));
         unidad.setCellValueFactory(new PropertyValueFactory<>("unidad"));
         fecha.setCellValueFactory(new PropertyValueFactory<>("fecha"));
+
         ActividadNombre.setCellValueFactory(cellData -> {
             Huella huella = cellData.getValue();
             Actividad actividad = actividadDAO.traerActividadPorID(huella);
             return new SimpleStringProperty(actividad != null ? actividad.getNombre() : "Actividad no disponible");
         });
 
+        TableColumn<Huella, Void> eliminarColumna = new TableColumn<>("Eliminar");
+
+        eliminarColumna.setCellFactory(param -> new TableCell<>() {
+            private final Button btnEliminar = new Button();
+
+            {
+                btnEliminar.setStyle("-fx-background-color: #FF4C4C; -fx-padding: 5;");
+                ImageView imageView = new ImageView(new Image(getClass().getResource("/org/example/view/papelera.png").toExternalForm()));
+                imageView.setFitHeight(16);
+                imageView.setFitWidth(16);
+                btnEliminar.setGraphic(imageView);
+
+                btnEliminar.setOnAction(event -> {
+                    Huella huellaSeleccionada = getTableView().getItems().get(getIndex());
+
+                    if (huellaSeleccionada != null) {
+                        boolean eliminado = huellaService.eliminarHuella(huellaSeleccionada);
+                        if (eliminado) {
+                            getTableView().getItems().remove(huellaSeleccionada);
+                            getTableView().refresh();
+                            System.out.println("Huella eliminada con éxito.");
+                        } else {
+                            System.out.println("Error al eliminar la huella.");
+                        }
+                    }
+                });
+            }
+
+            @Override
+            protected void updateItem(Void item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    setGraphic(null);
+                } else {
+                    setGraphic(btnEliminar);
+                }
+            }
+        });
+
+        huellaTable.getColumns().add(eliminarColumna);
+
         List<Huella> huellas = huellaService.listarHuellas(Session.getInstancia().getUsuarioIniciado());
         huellaTable.getItems().setAll(huellas);
+
         configurarTableView();
     }
 
-    private void configurarTableView(){
-        valor.setCellFactory(TextFieldTableCell.forTableColumn(new BigDecimalStringConverter()));
+        private void configurarTableView() {
+            valor.setCellFactory(TextFieldTableCell.forTableColumn(new BigDecimalStringConverter()));
         valor.setOnEditCommit(event -> {
             Huella huella = event.getRowValue();
             try {

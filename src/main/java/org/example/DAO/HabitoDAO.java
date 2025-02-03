@@ -25,8 +25,16 @@ public class HabitoDAO {
         Query query = session.createQuery(hql);
         query.setParameter("idUsuario", user.getId());
         List<Habito> habitos = query.getResultList();
+        session.close();
         return habitos;
+    }
 
-
+    public void eliminarHabito(Habito habito) {
+        Connection conn = Connection.getInstance();
+        Session session = conn.openSession();
+        session.beginTransaction();
+        session.delete(habito);
+        session.getTransaction().commit();
+        session.close();
     }
 }

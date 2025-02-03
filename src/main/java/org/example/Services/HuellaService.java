@@ -1,6 +1,7 @@
 package org.example.Services;
 
 import org.example.DAO.HuellaDAO;
+import org.example.Model.Habito;
 import org.example.Model.Huella;
 import org.example.Model.Usuario;
 
@@ -51,6 +52,17 @@ public class HuellaService {
     public static void actualizarHuella(Huella huella) {
         HuellaDAO huellaDAO = new HuellaDAO();
          huellaDAO.actualizarHuella(huella);
+    }
+
+    public boolean eliminarHuella(Huella huella) {
+        if (huella == null ) {
+            System.out.println("Huella inválida para eliminar.");
+            return false;
+        }else {
+            huellaDAO.eliminarHuella(huella);
+            System.out.println("Huella eliminada exitosamente");
+            return true;
+        }
     }
 
 

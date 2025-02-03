@@ -27,6 +27,7 @@ public class HuellaDAO {
         Query<Huella> query = session.createQuery(hql, Huella.class);
         query.setParameter("idUsuario", usuario.getId());
         huellas= query.list();
+        session.close();
         return huellas;
     }
 
@@ -35,6 +36,15 @@ public class HuellaDAO {
         Session session = conn.openSession();
         session.beginTransaction();
         session.merge(huella);
+        session.getTransaction().commit();
+        session.close();
+    }
+
+    public void eliminarHuella(Huella huella) {
+        Connection conn = Connection.getInstance();
+        Session session = conn.openSession();
+        session.beginTransaction();
+        session.delete(huella);
         session.getTransaction().commit();
         session.close();
     }

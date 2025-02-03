@@ -4,10 +4,9 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.View.MostrarHabitosController">
    <children>
-      <TableView fx:id="habitoView" layoutX="377.0" layoutY="198.0" prefHeight="671.0" prefWidth="1251.0">
+      <TableView fx:id="habitoView" layoutX="377.0" layoutY="198.0" prefHeight="671.0" prefWidth="1365.0">
         <columns>
           <TableColumn fx:id="ActividadNombre" prefWidth="514.4000244140625" text="Actividad" />
           <TableColumn fx:id="frecuencia" prefWidth="301.99981689453125" text="Frecuencia" />
