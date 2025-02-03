@@ -10,6 +10,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import org.example.App;
 import org.example.DAO.ActividadDAO;
 import org.example.DAO.HabitoDAO;
 import org.example.Model.Actividad;
@@ -37,6 +38,15 @@ public class MostrarHabitosController extends Controller implements Initializabl
     private TableColumn<Habito, Integer> frecuencia ;
     @FXML
     private TableColumn<Habito, String> tipo;
+    @FXML
+    private ImageView flechaAtras;
+
+    @FXML
+    public void irAPantallaPrincipal() throws IOException {
+        App.currentController.changeScene(Scenes.PAGINAPRINCIPAL,null);
+    }
+
+
         @FXML
         private TableColumn<Habito, LocalDate> fecha;
 

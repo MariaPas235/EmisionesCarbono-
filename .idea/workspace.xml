@@ -6,27 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="dd016665-ba96-443c-9bd5-174b4ff32788" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DAO/ActividadDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/DAO/ActividadDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DAO/CategoriaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/DAO/CategoriaDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DAO/HabitoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/DAO/HabitoDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DAO/HuellaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/DAO/HuellaDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Model/Actividad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Model/Actividad.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Model/Categoria.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Model/Categoria.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Model/Habito.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Model/Habito.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Model/Recomendacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Model/Recomendacion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Services/HabitoServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Services/HabitoServices.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Services/HuellaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Services/HuellaService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/View/MostrarHabitosController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/View/MostrarHabitosController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/View/MostrarHuellasController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/View/MostrarHuellasController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/View/RegistrarHabitosController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/View/RegistrarHabitosController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/View/RegistrarHuellasController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/View/RegistrarHuellasController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/view/MostrarHabitos.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/view/MostrarHabitos.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/DAO/ActividadDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/DAO/ActividadDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/DAO/HabitoDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/DAO/HabitoDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/DAO/HuellaDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/DAO/HuellaDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Services/HabitoServices.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Services/HabitoServices.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Services/HuellaService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Services/HuellaService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/View/MostrarHabitosController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/View/MostrarHabitosController$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/View/MostrarHabitosController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/View/MostrarHabitosController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/View/MostrarHuellasController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/View/MostrarHuellasController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/view/MostrarHuellas.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/view/MostrarHuellas.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/view/RegistrarHabitos.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/view/RegistrarHabitos.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,7 +118,7 @@
       <workItem from="1738506841651" duration="613000" />
       <workItem from="1738513272176" duration="8397000" />
       <workItem from="1738535055520" duration="2823000" />
-      <workItem from="1738575775738" duration="3072000" />
+      <workItem from="1738575775738" duration="5718000" />
     </task>
     <servers />
   </component>
@@ -160,11 +147,6 @@
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/View/RegistrarHabitosController.java</url>
-          <line>76</line>
-          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -12,6 +12,7 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.converter.BigDecimalStringConverter;
+import org.example.App;
 import org.example.DAO.ActividadDAO;
 import org.example.Model.Actividad;
 import org.example.Model.Huella;
@@ -37,6 +38,14 @@ public class MostrarHuellasController extends Controller  implements Initializab
     private TableColumn<Huella, String> unidad;
     @FXML
     private TableColumn<Huella, LocalDate> fecha;
+
+    @FXML
+    private ImageView flechaAtras;
+
+    @FXML
+    public void irAPantallaPrincipal() throws IOException {
+        App.currentController.changeScene(Scenes.PAGINAPRINCIPAL,null);
+    }
 
 
     HuellaService huellaService = new HuellaService();

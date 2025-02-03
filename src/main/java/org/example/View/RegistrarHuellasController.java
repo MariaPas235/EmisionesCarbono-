@@ -6,6 +6,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import org.example.App;
 import org.example.DAO.HuellaDAO;
 import org.example.Model.Actividad;
@@ -36,6 +38,13 @@ public class RegistrarHuellasController extends Controller implements Initializa
     private DatePicker fecha;
     @FXML
     private Button registrar;
+    @FXML
+    private ImageView fechaAtras;
+
+    @FXML
+    public void irAPantallaPrincipal() throws IOException {
+        App.currentController.changeScene(Scenes.PAGINAPRINCIPAL,null);
+    }
 
 
     @FXML
