@@ -3,6 +3,7 @@ package org.example.Services;
 import org.example.DAO.HuellaDAO;
 import org.example.Model.Habito;
 import org.example.Model.Huella;
+import org.example.Model.Recomendacion;
 import org.example.Model.Usuario;
 
 import java.math.BigDecimal;
@@ -74,6 +75,17 @@ public class HuellaService {
             return vacio;
         }else {
             return impacto;
+        }
+    }
+
+    public List<Recomendacion> listarRecomendaciones(Huella huella) {
+        List<Recomendacion> recomendaciones = huellaDAO.traerRecomendacionesPorHuella(huella);
+        if (recomendaciones.isEmpty()) {
+            System.out.println("No se han encontrado recomendaciones");
+            List<Recomendacion> vacio = new ArrayList<>();
+            return vacio;
+        }else {
+            return recomendaciones;
         }
     }
 

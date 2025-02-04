@@ -5,20 +5,35 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.example.App;
+import org.example.Model.Recomendacion;
 
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class AppController extends Controller implements Initializable {
     @FXML
     private BorderPane borderPane;
     private Controller centerController;
+    @FXML
+    static Alert alertInfo = new Alert(Alert.AlertType.INFORMATION);
+
+    public static void showRecomendacion(List<Recomendacion> recomendaciones) {
+        alertInfo.setTitle("Recomendacion");
+        alertInfo.getDialogPane().setPrefWidth(700);
+        alertInfo.getDialogPane().setPrefHeight(160);
+        alertInfo.setHeaderText(null);
+        alertInfo.setContentText(recomendaciones.toString());
+        alertInfo.showAndWait();
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 

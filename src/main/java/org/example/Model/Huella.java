@@ -79,4 +79,14 @@ public class Huella {
     }
 
 
+    @Override
+    public String toString() {
+        return "Huella{" +
+                "id=" + id +
+                ", idUsuario=" + idUsuario +
+                ", valor=" + valor +
+                ", unidad='" + unidad + '\'' +
+                ", fecha=" + fecha +
+                '}';
+    }
 }
