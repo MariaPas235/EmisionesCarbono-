@@ -1,5 +1,4 @@
 package org.example.View;
-
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -16,16 +15,15 @@ import org.example.App;
 import org.example.DAO.ActividadDAO;
 import org.example.Model.Actividad;
 import org.example.Model.Huella;
-import org.example.Model.Usuario;
 import org.example.Services.HuellaService;
 import org.example.Utils.Session;
-
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 public class MostrarHuellasController extends Controller  implements Initializable {
     @FXML
@@ -64,7 +62,6 @@ public class MostrarHuellasController extends Controller  implements Initializab
         });
 
         TableColumn<Huella, Void> eliminarColumna = new TableColumn<>("Eliminar");
-
         eliminarColumna.setCellFactory(param -> new TableCell<>() {
             private final Button btnEliminar = new Button();
 
@@ -104,34 +101,50 @@ public class MostrarHuellasController extends Controller  implements Initializab
 
         huellaTable.getColumns().add(eliminarColumna);
 
+        // Nueva columna para mostrar el impacto de carbono
+        TableColumn<Huella, String> impactoCarbonoColumna = new TableColumn<>("Impacto de Carbono");
+        impactoCarbonoColumna.setCellValueFactory(cellData -> {
+            Huella huella = cellData.getValue();
+
+            // Obtenemos la lista de impactos de carbono
+            List<BigDecimal> impactoCarbono = huellaService.listarImpactoSegunUsuario(Session.getInstancia().getUsuarioIniciado());
+
+            // Usamos la fila para obtener el índice de la fila actual
+            int index = huellaTable.getItems().indexOf(huella);
+
+            // Aseguramos que no excedamos el tamaño de la lista de impactos
+            if (index < impactoCarbono.size()) {
+                return new SimpleStringProperty(impactoCarbono.get(index).toString());
+            } else {
+                return new SimpleStringProperty(""); // Si no hay más impactos, retornamos una cadena vacía
+            }
+        });
+
+        huellaTable.getColumns().add(impactoCarbonoColumna);
+
+        // Llenamos la tabla con las huellas
         List<Huella> huellas = huellaService.listarHuellas(Session.getInstancia().getUsuarioIniciado());
         huellaTable.getItems().setAll(huellas);
 
         configurarTableView();
     }
 
-        private void configurarTableView() {
-            valor.setCellFactory(TextFieldTableCell.forTableColumn(new BigDecimalStringConverter()));
+
+    private void configurarTableView() {
+        valor.setCellFactory(TextFieldTableCell.forTableColumn(new BigDecimalStringConverter()));
         valor.setOnEditCommit(event -> {
             Huella huella = event.getRowValue();
             try {
                 BigDecimal nuevoValor = new BigDecimal(event.getNewValue().toString());
                 huella.setValor(nuevoValor);
                 HuellaService.actualizarHuella(huella);
-                /*
-                try {
-                    changescenetoPantallaPrincipal();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-                 */
                 System.out.println("Valor actualizado a: " + nuevoValor);
             } catch (NumberFormatException e) {
                 System.out.println("Error al convertir el valor a BigDecimal: " + event.getNewValue());
             }
         });
     }
+
 
     @Override
     public void onOpen(Object input) throws IOException {

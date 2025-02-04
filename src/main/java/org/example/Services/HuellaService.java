@@ -6,6 +6,7 @@ import org.example.Model.Huella;
 import org.example.Model.Usuario;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -62,6 +63,17 @@ public class HuellaService {
             huellaDAO.eliminarHuella(huella);
             System.out.println("Huella eliminada exitosamente");
             return true;
+        }
+    }
+
+    public List<BigDecimal> listarImpactoSegunUsuario(Usuario usuario) {
+        List<BigDecimal> impacto = huellaDAO.calcularImpactoPorIDUsuario(usuario);
+        if (impacto.isEmpty()) {
+            System.out.println("No se han encontrado impacto segun usuario");
+            List<BigDecimal> vacio = new ArrayList<>();
+            return vacio;
+        }else {
+            return impacto;
         }
     }
 

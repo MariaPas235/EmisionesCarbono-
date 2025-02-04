@@ -7,9 +7,15 @@ import org.example.Model.Usuario;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
+import java.math.BigDecimal;
 import java.util.List;
 
+
 public class HuellaDAO {
+
+    private final static String hql ="SELECT h.valor * c.factorEmision FROM Huella h JOIN Actividad a ON h.idActividad.id = a.id JOIN Categoria c ON a.idCategoria.id = c.id WHERE h.idUsuario.id = :idUsuario";
+
+
     public void insertHuella(Huella huella) {
         Connection conn = Connection.getInstance();
         Session session = conn.openSession();
@@ -47,5 +53,16 @@ public class HuellaDAO {
         session.delete(huella);
         session.getTransaction().commit();
         session.close();
+    }
+
+    public List <BigDecimal> calcularImpactoPorIDUsuario(Usuario usuario) {
+        Connection conn = Connection.getInstance();
+        Session session = conn.openSession();
+        List<BigDecimal> impactos = null;
+        Query <BigDecimal> query = session.createQuery(hql);
+        query.setParameter("idUsuario", usuario.getId());
+        impactos = query.getResultList();
+        session.close();
+        return impactos;
     }
 }
