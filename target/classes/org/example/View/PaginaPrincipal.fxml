@@ -4,33 +4,59 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.View.PaginaPrincipalController">
    <children>
-      <Button fx:id="RegistrarHuellas" layoutX="981.0" layoutY="290.0" mnemonicParsing="false" onMouseClicked="#irARegistrarHuellas" prefHeight="48.0" prefWidth="198.0" style="-fx-background-color: #186b2a;" text="Registrar Huellas" textFill="WHITE">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#186b2a" height="1098.0" layoutX="-5.0" layoutY="-4.0" stroke="BLACK" strokeType="INSIDE" width="960.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="327.0" layoutX="551.0" layoutY="377.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="8.0" width="284.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="327.0" layoutX="245.0" layoutY="377.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="8.0" width="284.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="327.0" layoutX="1366.0" layoutY="377.0" stroke="#186b2a" strokeType="INSIDE" strokeWidth="8.0" width="284.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="327.0" layoutX="1058.0" layoutY="377.0" stroke="#186b2a" strokeType="INSIDE" strokeWidth="8.0" width="284.0" />
+      <Button fx:id="RegistrarHuellas" layoutX="1101.0" layoutY="605.0" mnemonicParsing="false" onMouseClicked="#irARegistrarHuellas" prefHeight="48.0" prefWidth="198.0" style="-fx-background-color: #186b2a;" text="Registrar Huellas" textFill="WHITE">
          <font>
             <Font size="22.0" />
          </font>
       </Button>
-      <Button fx:id="misHuellas" layoutX="980.0" layoutY="403.0" mnemonicParsing="false" onAction="#irAMisHuellas" prefHeight="48.0" prefWidth="198.0" style="-fx-background-color: #186b2a;" text="Mis Huellas" textFill="WHITE">
+      <Button fx:id="misHuellas" layoutX="1409.0" layoutY="605.0" mnemonicParsing="false" onAction="#irAMisHuellas" prefHeight="48.0" prefWidth="198.0" style="-fx-background-color: #186b2a;" text="Mis Huellas" textFill="WHITE">
          <font>
             <Font size="21.0" />
          </font>
       </Button>
-      <Button fx:id="RegistrarHabito" layoutX="981.0" layoutY="527.0" mnemonicParsing="false" onAction="#irARegistrarHabitos" prefHeight="48.0" prefWidth="198.0" style="-fx-background-color: #186b2a;" text="Registrar hábitos" textFill="WHITE">
+      <Button fx:id="RegistrarHabito" layoutX="288.0" layoutY="605.0" mnemonicParsing="false" onAction="#irARegistrarHabitos" prefHeight="48.0" prefWidth="198.0" style="-fx-background-color: #186b2a;" text="Registrar hábitos" textFill="WHITE">
          <font>
             <Font size="21.0" />
          </font>
       </Button>
-      <Button fx:id="misHabitos" layoutX="981.0" layoutY="615.0" mnemonicParsing="false" onAction="#irAMisHabitos" prefHeight="48.0" prefWidth="198.0" style="-fx-background-color: #186b2a;" text="Mis Hábitos" textFill="WHITE">
+      <Button fx:id="misHabitos" layoutX="595.0" layoutY="605.0" mnemonicParsing="false" onAction="#irAMisHabitos" prefHeight="48.0" prefWidth="198.0" style="-fx-background-color: #186b2a;" text="Mis Hábitos" textFill="WHITE">
          <font>
             <Font size="21.0" />
          </font>
       </Button>
-      <ImageView fx:id="perfilUsuario" fitHeight="81.0" fitWidth="63.0" layoutX="1549.0" layoutY="115.0" onMouseClicked="#irAPerfilUsuario" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="perfilUsuario" fitHeight="81.0" fitWidth="63.0" layoutX="1650.0" layoutY="173.0" onMouseClicked="#irAPerfilUsuario" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@actualizarPerfil.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="100.0" fitWidth="99.0" layoutX="338.0" layoutY="463.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@habito.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="100.0" fitWidth="99.0" layoutX="644.0" layoutY="463.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@habito.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="99.0" fitWidth="108.0" layoutX="1151.0" layoutY="463.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@huella.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="99.0" fitWidth="108.0" layoutX="1459.0" layoutY="463.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@huella.png" />
          </image>
       </ImageView>
    </children>
