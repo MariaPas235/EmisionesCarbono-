@@ -67,13 +67,28 @@
             </RadialGradient>
          </fill>
       </Circle>
-      <Text fill="#186b2a" layoutX="1225.0" layoutY="229.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Iniciar Sesión">
+      <Text fill="#186b2a" layoutX="1225.0" layoutY="375.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Iniciar Sesión">
          <font>
             <Font name="Impact" size="50.0" />
          </font>
       </Text>
-      <TextField fx:id="emailUsuario" layoutX="1253.0" layoutY="356.0" prefHeight="39.0" prefWidth="230.0" promptText="Email" />
-      <TextField fx:id="contraseñaUsuario" layoutX="1253.0" layoutY="479.0" prefHeight="39.0" prefWidth="230.0" promptText="Contraseña " />
-      <Button layoutX="1302.0" layoutY="580.0" mnemonicParsing="false" onAction="#IniciarSesion" text="Iniciar Sesión" />
+      <TextField fx:id="emailUsuario" layoutX="1253.0" layoutY="462.0" prefHeight="39.0" prefWidth="230.0" promptText="Email" />
+      <TextField fx:id="contraseñaUsuario" layoutX="1253.0" layoutY="575.0" prefHeight="39.0" prefWidth="230.0" promptText="Contraseña " />
+      <Button layoutX="1302.0" layoutY="688.0" mnemonicParsing="false" onAction="#IniciarSesion" text="Iniciar Sesión" />
+      <ImageView fitHeight="159.0" fitWidth="224.0" layoutX="1255.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@logo.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="39.0" fitWidth="42.0" layoutX="1206.0" layoutY="462.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@iconoemail.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="44.0" fitWidth="39.0" layoutX="1206.0" layoutY="575.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@iconoContraseña.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

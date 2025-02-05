@@ -17,7 +17,6 @@ import org.example.DAO.HuellaDAO;
 import org.example.Model.Actividad;
 import org.example.Model.Huella;
 import org.example.Model.Recomendacion;
-import org.example.Services.ActividadServices;
 import org.example.Services.HuellaService;
 import org.example.Utils.Session;
 import java.io.IOException;
@@ -26,7 +25,6 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.stream.Collectors;
 
 public class MostrarHuellasController extends Controller  implements Initializable {
     @FXML

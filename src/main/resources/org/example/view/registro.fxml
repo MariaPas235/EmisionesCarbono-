@@ -17,7 +17,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="@registro.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.View.RegistroController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="1093.0" layoutX="30.0" layoutY="-13.0" stroke="BLACK" strokeType="INSIDE" width="1927.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="1093.0" layoutY="-41.0" stroke="BLACK" strokeType="INSIDE" width="1961.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0" startX="1.0">
                <stops>
@@ -35,7 +35,7 @@
             </LinearGradient>
          </fill>
       </Rectangle>
-      <Circle layoutX="360.0" layoutY="172.0" radius="60.0" stroke="BLACK" strokeType="INSIDE">
+      <Circle layoutX="288.0" layoutY="170.0" radius="60.0" stroke="BLACK" strokeType="INSIDE">
          <fill>
             <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
                <stops>
@@ -68,7 +68,7 @@
             <Image url="@arbol-removebg-preview.png" />
          </image>
       </ImageView>
-      <Text fill="#186b2a" layoutX="537.0" layoutY="311.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registrarse" wrappingWidth="366.91485595703125">
+      <Text fill="#186b2a" layoutX="537.0" layoutY="412.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registrarse" wrappingWidth="366.91485595703125">
          <font>
             <Font name="Impact" size="50.0" />
          </font>
@@ -78,19 +78,19 @@
             <Image url="@pajaro-removebg-preview.png" />
          </image>
       </ImageView>
-      <TextField fx:id="nombre" layoutX="540.0" layoutY="397.0" prefHeight="39.0" prefWidth="230.0" promptText="Nombre" />
-      <TextField fx:id="email" layoutX="540.0" layoutY="494.0" prefHeight="39.0" prefWidth="230.0" promptText="Email" />
-      <TextField fx:id="contraseña" layoutX="540.0" layoutY="583.0" prefHeight="39.0" prefWidth="230.0" promptText="Contraseña" />
-      <Button fx:id="registrar" layoutX="563.0" layoutY="673.0" mnemonicParsing="false" onAction="#regitrarUsuario" prefHeight="41.0" prefWidth="183.0" text="Registrarse">
+      <TextField fx:id="nombre" layoutX="541.0" layoutY="486.0" prefHeight="39.0" prefWidth="230.0" promptText="Nombre" />
+      <TextField fx:id="email" layoutX="541.0" layoutY="583.0" prefHeight="39.0" prefWidth="230.0" promptText="Email" />
+      <TextField fx:id="contraseña" layoutX="541.0" layoutY="672.0" prefHeight="39.0" prefWidth="230.0" promptText="Contraseña" />
+      <Button fx:id="registrar" layoutX="563.0" layoutY="785.0" mnemonicParsing="false" onAction="#regitrarUsuario" prefHeight="41.0" prefWidth="183.0" text="Registrarse">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <Text layoutX="540.0" layoutY="776.0" strokeType="OUTSIDE" strokeWidth="0.0" text="¿Ya tienes cuenta? " wrappingWidth="143.4000244140625">
+      <Text layoutX="540.0" layoutY="890.0" strokeType="OUTSIDE" strokeWidth="0.0" text="¿Ya tienes cuenta? " wrappingWidth="143.4000244140625">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Text fill="#1b21c9" layoutX="683.0" layoutY="775.0" onMouseClicked="#irAInicioSesion" strokeType="OUTSIDE" strokeWidth="0.0" text="Inicia Sesión">
+      <Text fill="#1b21c9" layoutX="683.0" layoutY="889.0" onMouseClicked="#irAInicioSesion" strokeType="OUTSIDE" strokeWidth="0.0" text="Inicia Sesión">
          <font>
             <Font size="15.0" />
          </font>
@@ -98,5 +98,25 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Text>
+      <ImageView fitHeight="214.0" fitWidth="230.0" layoutX="547.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@logo.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="39.0" fitWidth="37.0" layoutX="500.0" layoutY="487.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@iconoPersona.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="37.0" fitWidth="37.0" layoutX="500.0" layoutY="584.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@iconoemail.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="53.0" fitWidth="37.0" layoutX="500.0" layoutY="676.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@iconoContraseña.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
