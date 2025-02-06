@@ -11,11 +11,15 @@ import javafx.util.converter.BigDecimalStringConverter;
 import org.example.App;
 import org.example.DAO.ActividadDAO;
 import org.example.DAO.HuellaDAO;
+import org.example.DAO.UserDAO;
 import org.example.Model.Actividad;
 import org.example.Model.Huella;
 import org.example.Model.Recomendacion;
+import org.example.Model.Usuario;
 import org.example.Services.HuellaService;
 import org.example.Utils.Session;
+
+import javax.swing.text.Document;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.net.URL;
@@ -23,6 +27,7 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.YearMonth;
 import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 public class MostrarHuellasController extends Controller  implements Initializable {
@@ -36,6 +41,10 @@ public class MostrarHuellasController extends Controller  implements Initializab
     private TableColumn<Huella, String> unidad;
     @FXML
     private TableColumn<Huella, LocalDate> fecha;
+    @FXML
+    private Button exportarPDF;
+    @FXML
+    private TextArea outputTextArea;
 
     @FXML
     private ImageView flechaAtras;
@@ -49,7 +58,7 @@ public class MostrarHuellasController extends Controller  implements Initializab
         App.currentController.changeScene(Scenes.PAGINAPRINCIPAL,null);
     }
 
-
+    HuellaDAO huellaDAO = new HuellaDAO();
     HuellaService huellaService = new HuellaService();
     ActividadDAO actividadDAO = new ActividadDAO();
 
@@ -64,6 +73,21 @@ public class MostrarHuellasController extends Controller  implements Initializab
             Actividad actividad = actividadDAO.traerActividadPorID(huella);
             return new SimpleStringProperty(actividad != null ? actividad.getNombre() : "Actividad no disponible");
         });
+
+        TableColumn<Huella, String> impactoCarbonoColumna = new TableColumn<>("Impacto de Carbono");
+        impactoCarbonoColumna.setCellValueFactory(cellData -> {
+            Huella huella = cellData.getValue();
+            List<BigDecimal> impactoCarbono = huellaService.listarImpactoSegunUsuario(Session.getInstancia().getUsuarioIniciado());
+            int index = huellaTable.getItems().indexOf(huella);
+            if (index < impactoCarbono.size()) {
+                return new SimpleStringProperty(impactoCarbono.get(index).toString() + "kg/CO2");
+            } else {
+                return new SimpleStringProperty("");
+            }
+        });
+
+        huellaTable.getColumns().add(impactoCarbonoColumna);
+
 
         TableColumn<Huella, Void> eliminarColumna = new TableColumn<>("Eliminar");
         eliminarColumna.setCellFactory(param -> new TableCell<>() {
@@ -105,36 +129,47 @@ public class MostrarHuellasController extends Controller  implements Initializab
 
         huellaTable.getColumns().add(eliminarColumna);
 
-        TableColumn<Huella, String> impactoCarbonoColumna = new TableColumn<>("Impacto de Carbono");
-        impactoCarbonoColumna.setCellValueFactory(cellData -> {
-            Huella huella = cellData.getValue();
-            List<BigDecimal> impactoCarbono = huellaService.listarImpactoSegunUsuario(Session.getInstancia().getUsuarioIniciado());
-            int index = huellaTable.getItems().indexOf(huella);
-            if (index < impactoCarbono.size()) {
-                return new SimpleStringProperty(impactoCarbono.get(index).toString());
-            } else {
-                return new SimpleStringProperty("");
-            }
-        });
-
-        huellaTable.getColumns().add(impactoCarbonoColumna);
 
         // Nueva columna con botón de información
-        TableColumn<Huella, Void> infoColumna = new TableColumn<>("Info");
+        TableColumn<Huella, Void> infoColumna = new TableColumn<>("Recomendaciones");
         infoColumna.setCellFactory(param -> new TableCell<>() {
-            private final Button btnInfo = new Button("i");
+            private final Button btnInfo = new Button();
 
             {
+                // Configurar icono del botón
+                ImageView iconoInfo = new ImageView(new Image(getClass().getResource("/org/example/view/info.png").toExternalForm()));
+                iconoInfo.setFitWidth(16);
+                iconoInfo.setFitHeight(16);
+                btnInfo.setGraphic(iconoInfo);
                 btnInfo.setStyle("-fx-background-color: #007bff; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 3;");
+
                 btnInfo.setOnAction(event -> {
                     Huella huellaSeleccionada = getTableView().getItems().get(getIndex());
-                    System.out.println(huellaSeleccionada);
-                    HuellaDAO huellaDAO = new HuellaDAO();
-                    List<Recomendacion> recomendacions = huellaDAO.traerRecomendacionesPorHuella(huellaSeleccionada);
-                    System.out.println(recomendacions);
                     if (huellaSeleccionada != null) {
-                        AppController.showRecomendacion(recomendacions);
+                        HuellaDAO huellaDAO = new HuellaDAO();
+                        List<Recomendacion> recomendaciones = huellaDAO.traerRecomendacionesPorHuella(huellaSeleccionada);
 
+                        if (recomendaciones == null || recomendaciones.isEmpty()) {
+                            // Mostrar alerta si no hay recomendaciones
+                            Alert alertaNoInfo = new Alert(Alert.AlertType.INFORMATION);
+                            alertaNoInfo.setTitle("Sin Recomendaciones");
+                            alertaNoInfo.setHeaderText(null);
+                            alertaNoInfo.setContentText("No hay recomendaciones disponibles para esta huella.");
+                            alertaNoInfo.showAndWait();
+                        } else {
+                            // Crear un mensaje con las recomendaciones
+                            StringBuilder mensajeRecomendaciones = new StringBuilder("Recomendaciones para la huella " + huellaSeleccionada.getIdActividad().getNombre()+ ":\n\n");
+                            for (Recomendacion recomendacion : recomendaciones) {
+                                mensajeRecomendaciones.append("- ").append(recomendacion.getDescripcion()).append("\n");
+                            }
+
+                            // Mostrar alerta con las recomendaciones
+                            Alert alertaInfo = new Alert(Alert.AlertType.INFORMATION);
+                            alertaInfo.setTitle("Recomendaciones");
+                            alertaInfo.setHeaderText("Información Relevante");
+                            alertaInfo.setContentText(mensajeRecomendaciones.toString());
+                            alertaInfo.showAndWait();
+                        }
                     }
                 });
             }
@@ -158,6 +193,27 @@ public class MostrarHuellasController extends Controller  implements Initializab
         configurarTableView();
 
         filtroImpacto.getItems().addAll("Semanal","Mensual","Anual");
+
+        mostrarImpacto();
+    }
+
+    private void mostrarImpacto() {
+        StringBuilder sb = new StringBuilder();
+        UserDAO userDAO = new UserDAO();
+        List<Usuario> usuarios = userDAO.traerUsuarios();
+
+        for (Usuario usuario : usuarios) {
+            Map<String, BigDecimal> impactos = huellaDAO.calcularImpactoPorCategoriaPorIDUsuario(usuario);
+
+            sb.append("Usuario: ").append(usuario.getNombre()).append("\n");
+            for (String categoria : List.of("Transporte", "Energía", "Alimentación", "Residuos", "Agua")) {
+                BigDecimal impacto = impactos.getOrDefault(categoria, BigDecimal.ZERO);
+                sb.append(" - ").append(categoria).append(": ").append(impacto).append("\n");
+            }
+            sb.append("\n");
+        }
+
+        outputTextArea.setText(sb.toString());
     }
 
 
@@ -187,17 +243,29 @@ public class MostrarHuellasController extends Controller  implements Initializab
 
     }
 
-    private void mostrarImpactosAgrupados (List<Object[]> impactosFiltrados){
+    private void mostrarImpactosAgrupados(List<Object[]> impactosFiltrados) {
         StringBuilder resultado = new StringBuilder();
+
+        resultado.append("====================================\n");
+        resultado.append("      Resumen de Impactos Agrupados      \n");
+        resultado.append("====================================\n\n");
 
         for (Object[] fila : impactosFiltrados) {
             String actividad = (String) fila[0];
             BigDecimal impactoTotal = (BigDecimal) fila[1];
-            resultado.append("Actividad: ").append(actividad)
-                    .append(" = ").append(impactoTotal).append(" CO2\n");
+            resultado.append("• Actividad: ")
+                    .append(actividad)
+                    .append("\n   ↳ Impacto Total: ")
+                    .append(impactoTotal).append(" kg/CO2\n\n");
         }
-        mostrarImpacto.setText(resultado.toString());
 
+        if (impactosFiltrados.isEmpty()) {
+            resultado.append("No se encontraron impactos para mostrar.\n");
+        }
+
+        resultado.append("====================================");
+
+        mostrarImpacto.setText(resultado.toString());
     }
 
     @FXML
@@ -228,6 +296,8 @@ public class MostrarHuellasController extends Controller  implements Initializab
         List<Object[]> impactos = huellaDAO.calcularImpactoAgrupadoPorActividad(Session.getInstancia().getUsuarioIniciado(), inicio, fin);
         mostrarImpactosAgrupados(impactos);
     }
+
+
 
 
 

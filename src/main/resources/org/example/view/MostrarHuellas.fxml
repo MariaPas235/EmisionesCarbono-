@@ -7,10 +7,12 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.View.MostrarHuellasController">
    <children>
-      <TableView fx:id="huellaTable" editable="true" layoutX="284.0" layoutY="222.0" prefHeight="277.0" prefWidth="1106.0">
+      <TableView fx:id="huellaTable" editable="true" layoutX="284.0" layoutY="222.0" prefHeight="277.0" prefWidth="1349.0">
         <columns>
           <TableColumn fx:id="ActividadNombre" prefWidth="460.0" text="Actividad" />
           <TableColumn fx:id="valor" prefWidth="208.7999267578125" text="Valor" />
@@ -18,12 +20,28 @@
             <TableColumn fx:id="fecha" prefWidth="153.199951171875" text="Fecha " />
         </columns>
       </TableView>
-      <ImageView fx:id="flechaAtras" fitHeight="59.0" fitWidth="100.0" layoutX="383.0" layoutY="150.0" onMouseClicked="#irAPantallaPrincipal" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="flechaAtras" fitHeight="59.0" fitWidth="100.0" layoutX="284.0" layoutY="131.0" onMouseClicked="#irAPantallaPrincipal" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@flechaAtrasVerde.png" />
          </image>
       </ImageView>
-      <ComboBox fx:id="filtroImpacto" layoutX="284.0" layoutY="581.0" onAction="#manejarSeleccionPeriodo" prefWidth="150.0" />
-      <TextArea fx:id="mostrarImpacto" layoutX="663.0" layoutY="531.0" prefHeight="200.0" prefWidth="506.0" />
+      <ComboBox fx:id="filtroImpacto" layoutX="914.0" layoutY="650.0" onAction="#manejarSeleccionPeriodo" prefWidth="150.0" promptText="Periodo" />
+      <TextArea fx:id="mostrarImpacto" layoutX="833.0" layoutY="708.0" prefHeight="218.0" prefWidth="311.0" />
+      <Text fill="#186b2a" layoutX="856.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mis Huellas" wrappingWidth="415.788330078125">
+         <font>
+            <Font name="Impact" size="57.0" />
+         </font>
+      </Text>
+      <Text fill="#186b2a" layoutX="779.0" layoutY="570.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Calcular Impacto por periodo">
+         <font>
+            <Font name="Impact" size="35.0" />
+         </font>
+      </Text>
+      <Text layoutX="855.0" layoutY="616.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Seleccione en el desplegable un periodo">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <TextArea fx:id="outputTextArea" layoutX="1341.0" layoutY="550.0" prefHeight="200.0" prefWidth="289.0" />
    </children>
 </AnchorPane>

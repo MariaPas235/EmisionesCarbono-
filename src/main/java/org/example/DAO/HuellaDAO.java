@@ -9,7 +9,9 @@ import org.hibernate.query.Query;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class HuellaDAO {
@@ -90,5 +92,30 @@ public class HuellaDAO {
         impactosfiltro = impactos.getResultList();
         session.close();
         return impactosfiltro;
+    }
+
+    public Map<String, BigDecimal> calcularImpactoPorCategoriaPorIDUsuario(Usuario usuario) {
+        Connection conn = Connection.getInstance();
+        Session session = conn.openSession();
+
+        String hql = "SELECT c.nombre, SUM(h.valor * c.factorEmision) " +
+                "FROM Huella h " +
+                "JOIN h.idActividad a " +
+                "JOIN a.idCategoria c " +
+                "WHERE h.idUsuario.id = :idUsuario " +
+                "GROUP BY c.nombre";
+
+        Query<Object[]> query = session.createQuery(hql, Object[].class);
+        query.setParameter("idUsuario", usuario.getId());
+
+        Map<String, BigDecimal> impactos = new HashMap<>();
+        for (Object[] result : query.getResultList()) {
+            String categoria = (String) result[0];
+            BigDecimal impacto = (BigDecimal) result[1];
+            impactos.put(categoria, impacto);
+        }
+
+        session.close();
+        return impactos;
     }
 }
