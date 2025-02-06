@@ -1,22 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.TilePane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.View.MostrarHabitosController">
+<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.View.MostrarHabitosController">
    <children>
-      <TableView fx:id="habitoView" layoutX="377.0" layoutY="198.0" prefHeight="671.0" prefWidth="1337.0">
-        <columns>
-          <TableColumn fx:id="ActividadNombre" prefWidth="514.4000244140625" text="Actividad" />
-          <TableColumn fx:id="frecuencia" prefWidth="301.99981689453125" text="Frecuencia" />
-            <TableColumn fx:id="tipo" prefWidth="294.4000244140625" text="TIpo" />
-            <TableColumn fx:id="fecha" prefWidth="140.0" text="Fecha" />
-        </columns>
-      </TableView>
-      <ImageView fx:id="flechaAtras" fitHeight="51.0" fitWidth="100.0" layoutX="453.0" layoutY="128.0" onMouseClicked="#irAPantallaPrincipal" pickOnBounds="true" preserveRatio="true">
+      <TilePane fx:id="contenedorTarjetas" layoutX="593.0" layoutY="181.0" prefHeight="608.0" prefWidth="617.0" />
+      <ImageView fx:id="flechaAtras" fitHeight="66.0" fitWidth="75.0" layoutX="319.0" layoutY="193.0" onMouseClicked="#irAPantallaPrincipal" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@flechaAtrasVerde.png" />
          </image>

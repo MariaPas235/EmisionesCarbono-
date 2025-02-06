@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="@tableview.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.View.MostrarHuellasController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.View.MostrarHuellasController">
    <children>
-      <TableView fx:id="huellaTable" editable="true" layoutX="284.0" layoutY="222.0" prefHeight="624.0" prefWidth="1106.0">
+      <TableView fx:id="huellaTable" editable="true" layoutX="284.0" layoutY="222.0" prefHeight="277.0" prefWidth="1106.0">
         <columns>
           <TableColumn fx:id="ActividadNombre" prefWidth="460.0" text="Actividad" />
           <TableColumn fx:id="valor" prefWidth="208.7999267578125" text="Valor" />
@@ -21,5 +23,7 @@
             <Image url="@flechaAtrasVerde.png" />
          </image>
       </ImageView>
+      <ComboBox fx:id="filtroImpacto" layoutX="284.0" layoutY="581.0" onAction="#manejarSeleccionPeriodo" prefWidth="150.0" />
+      <TextArea fx:id="mostrarImpacto" layoutX="663.0" layoutY="531.0" prefHeight="200.0" prefWidth="506.0" />
    </children>
 </AnchorPane>

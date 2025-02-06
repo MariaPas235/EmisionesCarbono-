@@ -6,7 +6,22 @@
   <component name="ChangeListManager">
     <list default="true" id="dd016665-ba96-443c-9bd5-174b4ff32788" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DAO/HuellaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/DAO/HuellaDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/View/MostrarHabitosController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/View/MostrarHabitosController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/View/MostrarHuellasController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/View/MostrarHuellasController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/view/MostrarHabitos.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/view/MostrarHabitos.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/view/MostrarHuellas.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/view/MostrarHuellas.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/view/PaginaPrincipal.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/view/PaginaPrincipal.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/DAO/HuellaDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/DAO/HuellaDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/View/MostrarHabitos.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/View/MostrarHabitos.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/View/MostrarHabitosController$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/View/MostrarHabitosController$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/View/MostrarHabitosController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/View/MostrarHabitosController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/View/MostrarHuellas.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/View/MostrarHuellas.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/View/MostrarHuellasController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/View/MostrarHuellasController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/View/MostrarHuellasController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/View/MostrarHuellasController$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/View/MostrarHuellasController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/View/MostrarHuellasController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/example/View/PaginaPrincipal.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/View/PaginaPrincipal.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -116,6 +131,9 @@
       <workItem from="1738606288930" duration="7283000" />
       <workItem from="1738681279703" duration="9051000" />
       <workItem from="1738741241304" duration="7947000" />
+      <workItem from="1738765413731" duration="5711000" />
+      <workItem from="1738777671020" duration="6605000" />
+      <workItem from="1738784313441" duration="312000" />
     </task>
     <servers />
   </component>

@@ -2,10 +2,7 @@ package org.example.View;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.Image;
@@ -22,7 +19,9 @@ import org.example.Utils.Session;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.net.URL;
+import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.time.YearMonth;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -40,6 +39,10 @@ public class MostrarHuellasController extends Controller  implements Initializab
 
     @FXML
     private ImageView flechaAtras;
+    @FXML
+    private ComboBox<String> filtroImpacto;
+    @FXML
+    private TextArea mostrarImpacto;
 
     @FXML
     public void irAPantallaPrincipal() throws IOException {
@@ -153,6 +156,8 @@ public class MostrarHuellasController extends Controller  implements Initializab
         huellaTable.getItems().setAll(huellas);
 
         configurarTableView();
+
+        filtroImpacto.getItems().addAll("Semanal","Mensual","Anual");
     }
 
 
@@ -181,6 +186,50 @@ public class MostrarHuellasController extends Controller  implements Initializab
         return huella;
 
     }
+
+    private void mostrarImpactosAgrupados (List<Object[]> impactosFiltrados){
+        StringBuilder resultado = new StringBuilder();
+
+        for (Object[] fila : impactosFiltrados) {
+            String actividad = (String) fila[0];
+            BigDecimal impactoTotal = (BigDecimal) fila[1];
+            resultado.append("Actividad: ").append(actividad)
+                    .append(" = ").append(impactoTotal).append(" CO2\n");
+        }
+        mostrarImpacto.setText(resultado.toString());
+
+    }
+
+    @FXML
+    public void manejarSeleccionPeriodo(){
+        String periodoSeleccionado = filtroImpacto.getValue();
+        LocalDate inicio;
+        LocalDate fin;
+
+        switch (periodoSeleccionado) {
+            case "Semanal":
+                inicio = LocalDate.now().with(DayOfWeek.MONDAY);
+                fin = inicio.plusDays(6);
+                break;
+            case "Mensual":
+                YearMonth mesActual = YearMonth.now();
+                inicio = mesActual.atDay(1);
+                fin = mesActual.atEndOfMonth();
+                break;
+            case "Anual":
+                int year = LocalDate.now().getYear();
+                inicio = LocalDate.of(year, 1, 1);
+                fin = LocalDate.of(year, 12, 31);
+                break;
+            default:
+                return;
+        }
+        HuellaDAO huellaDAO = new HuellaDAO();
+        List<Object[]> impactos = huellaDAO.calcularImpactoAgrupadoPorActividad(Session.getInstancia().getUsuarioIniciado(), inicio, fin);
+        mostrarImpactosAgrupados(impactos);
+    }
+
+
 
 
     @Override
