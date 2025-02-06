@@ -6,7 +6,6 @@ import javafx.stage.Stage;
 import org.example.View.AppController;
 import org.example.View.Scenes;
 import org.example.View.View;
-
 import java.io.IOException;
 
 /**

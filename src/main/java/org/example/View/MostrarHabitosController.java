@@ -11,8 +11,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import org.example.App;
 import org.example.DAO.ActividadDAO;
+import org.example.DAO.HabitoDAO;
 import org.example.Model.Actividad;
 import org.example.Model.Habito;
+import org.example.Model.Recomendacion;
 import org.example.Services.HabitoServices;
 import org.example.Utils.Session;
 import java.io.IOException;
@@ -96,8 +98,44 @@ public class MostrarHabitosController extends Controller implements Initializabl
                 }
             });
 
+            // Botón de recomendación
+            Button btnInfo = new Button();
+            ImageView iconoInfo = new ImageView(new Image(getClass().getResource("/org/example/view/info.png").toExternalForm()));
+            iconoInfo.setFitWidth(16);
+            iconoInfo.setFitHeight(16);
+            btnInfo.setGraphic(iconoInfo);
+            btnInfo.setStyle("-fx-background-color: #007bff; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 3;");
+
+            btnInfo.setOnAction(event -> {
+                // Obtener la lista de recomendaciones para el hábito
+                HabitoDAO habitoDAO = new HabitoDAO();
+                List<Recomendacion> recomendaciones = habitoDAO.traerRecomendacionesPorHabito(habito);
+
+                if (recomendaciones == null || recomendaciones.isEmpty()) {
+                    // Mostrar alerta si no hay recomendaciones
+                    Alert alertaNoInfo = new Alert(Alert.AlertType.INFORMATION);
+                    alertaNoInfo.setTitle("Sin Recomendaciones");
+                    alertaNoInfo.setHeaderText(null);
+                    alertaNoInfo.setContentText("No hay recomendaciones disponibles para este hábito.");
+                    alertaNoInfo.showAndWait();
+                } else {
+                    // Crear un mensaje con las recomendaciones
+                    StringBuilder mensajeRecomendaciones = new StringBuilder("Recomendaciones para el hábito " + habito.getIdActividad().getNombre() + ":\n\n");
+                    for (Recomendacion recomendacion : recomendaciones) {
+                        mensajeRecomendaciones.append("- ").append(recomendacion.getDescripcion()).append("\n");
+                    }
+
+                    // Mostrar alerta con las recomendaciones
+                    Alert alertaInfo = new Alert(Alert.AlertType.INFORMATION);
+                    alertaInfo.setTitle("Recomendaciones");
+                    alertaInfo.setHeaderText("Información Relevante");
+                    alertaInfo.setContentText(mensajeRecomendaciones.toString());
+                    alertaInfo.showAndWait();
+                }
+            });
+
             // Agregar elementos a la tarjeta
-            tarjeta.getChildren().addAll(imagenActividad, nombreActividad, frecuenciaLabel, tipoLabel, fechaLabel, btnEliminar);
+            tarjeta.getChildren().addAll(imagenActividad, nombreActividad, frecuenciaLabel, tipoLabel, fechaLabel, btnEliminar, btnInfo);
 
             // Agregar tarjeta al contenedor de tarjetas
             contenedorTarjetas.getChildren().add(tarjeta);
@@ -118,6 +156,7 @@ public class MostrarHabitosController extends Controller implements Initializabl
             default: return null;
         }
     }
+
 
 
 
