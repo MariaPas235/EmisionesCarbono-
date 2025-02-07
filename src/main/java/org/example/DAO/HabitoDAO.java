@@ -37,6 +37,15 @@ public class HabitoDAO {
         return habitos;
     }
 
+    public void actualizarHabito(Habito habito) {
+        Connection conn = Connection.getInstance();
+        Session session = conn.openSession();
+        session.beginTransaction();
+        session.update(habito);
+        session.getTransaction().commit();
+        session.close();
+    }
+
     public void eliminarHabito(Habito habito) {
         Connection conn = Connection.getInstance();
         Session session = conn.openSession();

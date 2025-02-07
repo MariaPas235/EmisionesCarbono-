@@ -1,19 +1,26 @@
 package org.example.View;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.util.converter.BigDecimalStringConverter;
 import org.example.App;
 import org.example.Model.Actividad;
 import org.example.Model.Habito;
+import org.example.Model.Huella;
 import org.example.Model.Recomendacion;
 import org.example.Services.ActividadServices;
 import org.example.Services.HabitoServices;
+import org.example.Services.HuellaService;
 import org.example.Utils.Session;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -39,8 +46,6 @@ public class MostrarHabitosController extends Controller implements Initializabl
 
     @FXML
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // Este método es invocado automáticamente cuando la escena es cargada
-
         // Obtener la lista de hábitos del usuario actual
         List<Habito> habitos = habitoServices.listarHabitos(Session.getInstancia().getUsuarioIniciado());
 
@@ -73,6 +78,35 @@ public class MostrarHabitosController extends Controller implements Initializabl
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
             Label fechaLabel = new Label("Última fecha: " + (habito.getUltimaFecha() != null ? habito.getUltimaFecha().format(formatter) : "Sin fecha"));
 
+            // TextField para editar la frecuencia
+            TextField inputFrecuencia = new TextField();
+            inputFrecuencia.setPromptText("Editar frecuencia");
+            inputFrecuencia.setMaxWidth(80);
+
+            // Botón para actualizar la frecuencia
+            Button btnActualizarFrecuencia = new Button("Actualizar");
+            btnActualizarFrecuencia.setStyle("-fx-background-color: #28a745; -fx-text-fill: white;");
+
+            btnActualizarFrecuencia.setOnAction(event -> {
+                try {
+                    int nuevaFrecuencia = Integer.parseInt(inputFrecuencia.getText());
+                    if (nuevaFrecuencia <= 0) {
+                        mostrarAlerta("Frecuencia inválida", "La frecuencia debe ser un número positivo.");
+                        return;
+                    }
+
+                    habito.setFrecuencia(nuevaFrecuencia);
+                    if (habitoServices.actualizarFrecuenciaHabito(habito)) {
+                        frecuenciaLabel.setText("Frecuencia: " + nuevaFrecuencia);
+                        System.out.println("Frecuencia actualizada a: " + nuevaFrecuencia);
+                    } else {
+                        mostrarAlerta("Error", "No se pudo actualizar la frecuencia.");
+                    }
+                } catch (NumberFormatException e) {
+                    mostrarAlerta("Formato inválido", "Por favor ingrese un número válido.");
+                }
+            });
+
             // Botón de eliminar
             Button btnEliminar = new Button();
             ImageView iconoPapelera = new ImageView(new Image(getClass().getResource("/org/example/view/papelera.png").toExternalForm()));
@@ -99,40 +133,25 @@ public class MostrarHabitosController extends Controller implements Initializabl
             btnInfo.setStyle("-fx-background-color: #007bff; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 3;");
 
             btnInfo.setOnAction(event -> {
-                // Obtener la lista de recomendaciones para el hábito
                 List<Recomendacion> recomendaciones = habitoServices.traerRecomendacionesPorHabito(habito);
-
                 if (recomendaciones == null || recomendaciones.isEmpty()) {
-                    // Mostrar alerta si no hay recomendaciones
-                    Alert alertaNoInfo = new Alert(Alert.AlertType.INFORMATION);
-                    alertaNoInfo.setTitle("Sin Recomendaciones");
-                    alertaNoInfo.setHeaderText(null);
-                    alertaNoInfo.setContentText("No hay recomendaciones disponibles para este hábito.");
-                    alertaNoInfo.showAndWait();
+                    mostrarAlerta("Sin Recomendaciones", "No hay recomendaciones disponibles para este hábito.");
                 } else {
-                    // Crear un mensaje con las recomendaciones
                     StringBuilder mensajeRecomendaciones = new StringBuilder("Recomendaciones para el hábito " + habito.getIdActividad().getNombre() + ":\n\n");
                     for (Recomendacion recomendacion : recomendaciones) {
                         mensajeRecomendaciones.append("- ").append(recomendacion.getDescripcion()).append("\n");
                     }
-
-                    // Mostrar alerta con las recomendaciones
-                    Alert alertaInfo = new Alert(Alert.AlertType.INFORMATION);
-                    alertaInfo.setTitle("Recomendaciones");
-                    alertaInfo.setHeaderText("Información Relevante");
-                    alertaInfo.setContentText(mensajeRecomendaciones.toString());
-                    alertaInfo.showAndWait();
+                    mostrarAlerta("Recomendaciones", mensajeRecomendaciones.toString());
                 }
             });
 
             // Agregar elementos a la tarjeta
-            tarjeta.getChildren().addAll(imagenActividad, nombreActividad, frecuenciaLabel, tipoLabel, fechaLabel, btnEliminar, btnInfo);
+            tarjeta.getChildren().addAll(imagenActividad, nombreActividad, frecuenciaLabel, tipoLabel, fechaLabel, inputFrecuencia, btnActualizarFrecuencia, btnEliminar, btnInfo);
 
             // Agregar tarjeta al contenedor de tarjetas
             contenedorTarjetas.getChildren().add(tarjeta);
         }
     }
-
     private String obtenerRutaImagenActividad(String nombreActividad) {
         switch (nombreActividad) {
             case "Conducir coche": return "/org/example/view/actividad1Coche.png";
@@ -147,6 +166,48 @@ public class MostrarHabitosController extends Controller implements Initializabl
             default: return null;
         }
     }
+    private void configurarTarjetaHabito(Habito habito, VBox tarjeta) {
+        Label frecuenciaLabel = new Label("Frecuencia: " + habito.getFrecuencia());
+        frecuenciaLabel.setStyle("-fx-font-size: 12px;");
+
+        TextField inputFrecuencia = new TextField();
+        inputFrecuencia.setPromptText("Editar frecuencia");
+        inputFrecuencia.setMaxWidth(80);
+
+        Button btnActualizar = new Button("Actualizar");
+        btnActualizar.setStyle("-fx-background-color: #28a745; -fx-text-fill: white;");
+
+        btnActualizar.setOnAction(event -> {
+            try {
+                int nuevaFrecuencia = Integer.parseInt(inputFrecuencia.getText());
+                if (nuevaFrecuencia <= 0) {
+                    mostrarAlerta("Frecuencia inválida", "La frecuencia debe ser un número positivo.");
+                    return;
+                }
+
+                habito.setFrecuencia(nuevaFrecuencia);
+                if (habitoServices.actualizarFrecuenciaHabito(habito)) {
+                    frecuenciaLabel.setText("Frecuencia: " + nuevaFrecuencia);
+                    System.out.println("Frecuencia actualizada a: " + nuevaFrecuencia);
+                } else {
+                    mostrarAlerta("Error", "No se pudo actualizar la frecuencia.");
+                }
+            } catch (NumberFormatException e) {
+                mostrarAlerta("Formato inválido", "Por favor ingrese un número válido.");
+            }
+        });
+
+        tarjeta.getChildren().addAll(frecuenciaLabel, inputFrecuencia, btnActualizar);
+    }
+
+    private void mostrarAlerta(String titulo, String mensaje) {
+        Alert alerta = new Alert(Alert.AlertType.WARNING);
+        alerta.setTitle(titulo);
+        alerta.setHeaderText(null);
+        alerta.setContentText(mensaje);
+        alerta.showAndWait();
+    }
+
 
 
 

@@ -222,9 +222,12 @@ public class MostrarHuellasController extends Controller  implements Initializab
                 BigDecimal nuevoValor = new BigDecimal(event.getNewValue().toString());
                 huella.setValor(nuevoValor);
                 HuellaService.actualizarHuella(huella);
+                volverPantalla();
                 System.out.println("Valor actualizado a: " + nuevoValor);
             } catch (NumberFormatException e) {
                 System.out.println("Error al convertir el valor a BigDecimal: " + event.getNewValue());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
         });
     }
@@ -317,7 +320,9 @@ public class MostrarHuellasController extends Controller  implements Initializab
         alerta.showAndWait();
     }
 
-
+    public void volverPantalla() throws IOException {
+        App.currentController.changeScene(Scenes.MISHUELLAS,null);
+    }
 
     @Override
     public void onOpen(Object input) throws IOException {

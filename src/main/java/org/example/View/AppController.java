@@ -24,6 +24,7 @@ public class AppController extends Controller implements Initializable {
     private Controller centerController;
     @FXML
     static Alert alertInfo = new Alert(Alert.AlertType.INFORMATION);
+    static Alert alertError = new Alert(Alert.AlertType.ERROR);
 
     public static void showRecomendacion(List<Recomendacion> recomendaciones) {
         alertInfo.setTitle("Recomendacion");
@@ -33,6 +34,27 @@ public class AppController extends Controller implements Initializable {
         alertInfo.setContentText(recomendaciones.toString());
         alertInfo.showAndWait();
     }
+
+    public static void showError(String error) {
+        alertError.setTitle("Error");
+        alertError.getDialogPane().setPrefWidth(700);
+        alertError.getDialogPane().setPrefHeight(160);
+        alertError.setHeaderText(null);
+        alertError.setContentText(error);
+        alertError.showAndWait();
+    }
+
+    public static void showInfo(String info) {
+        alertInfo.setTitle("Recomendacion");
+        alertInfo.getDialogPane().setPrefWidth(700);
+        alertInfo.getDialogPane().setPrefHeight(160);
+        alertInfo.setHeaderText(null);
+        alertInfo.setContentText(info);
+        alertInfo.showAndWait();
+    }
+
+
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

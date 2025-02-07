@@ -7,7 +7,7 @@
 
 <AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.View.MostrarHabitosController">
    <children>
-      <TilePane fx:id="contenedorTarjetas" layoutX="593.0" layoutY="181.0" prefHeight="608.0" prefWidth="617.0" />
+      <TilePane fx:id="contenedorTarjetas" layoutX="593.0" layoutY="181.0" prefHeight="458.0" prefWidth="1089.0" />
       <ImageView fx:id="flechaAtras" fitHeight="66.0" fitWidth="75.0" layoutX="319.0" layoutY="193.0" onMouseClicked="#irAPantallaPrincipal" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@flechaAtrasVerde.png" />
