@@ -5,6 +5,8 @@ module org.example {
     requires jakarta.persistence;
     requires org.hibernate.orm.core;
     requires java.desktop;
+    requires kernel;
+    requires layout;
 
     opens org.example to javafx.fxml;
     opens org.example.Model to javafx.base, org.hibernate.orm.core; // Habilitar acceso para JavaFX y Hibernate

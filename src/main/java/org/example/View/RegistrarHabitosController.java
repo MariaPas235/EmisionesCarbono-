@@ -9,7 +9,6 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import org.example.App;
-import org.example.DAO.HabitoDAO;
 import org.example.Model.Actividad;
 import org.example.Model.Habito;
 import org.example.Model.HabitoId;
@@ -75,7 +74,7 @@ public class RegistrarHabitosController extends Controller implements Initializa
     @FXML
     public Actividad ActividadCompleta() {
         ActividadServices actividadesService = new ActividadServices();
-        Actividad actividadCompleta = actividadesService.ActividadCompletaPorNombre(recogerNombreActividad());
+        Actividad actividadCompleta = actividadesService.actividadCompletaPorNombre(recogerNombreActividad());
         System.out.println(actividadCompleta);
         return actividadCompleta;
 
@@ -113,7 +112,6 @@ public class RegistrarHabitosController extends Controller implements Initializa
     @FXML
     public void registrarHabito() {
         HabitoServices habitoServices = new HabitoServices();
-        HabitoDAO habitoDAO = new HabitoDAO();
         if (habitoServices.insertarHabito(recogerDatos())){
             System.out.println("habito registrado correctamente");
         }else {

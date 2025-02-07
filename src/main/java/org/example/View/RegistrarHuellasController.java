@@ -6,10 +6,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import org.example.App;
-import org.example.DAO.HuellaDAO;
 import org.example.Model.Actividad;
 import org.example.Model.Categoria;
 import org.example.Model.Huella;
@@ -17,12 +15,9 @@ import org.example.Services.ActividadServices;
 import org.example.Services.CategoríaServices;
 import org.example.Services.HuellaService;
 import org.example.Utils.Session;
-
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.net.URL;
-import java.time.Instant;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -66,7 +61,7 @@ public class RegistrarHuellasController extends Controller implements Initializa
     @FXML
     public Actividad ActividadCompleta(){
         ActividadServices actividadesService = new ActividadServices();
-        Actividad actividadCompleta = actividadesService.ActividadCompletaPorNombre(recogerNombreActividad());
+        Actividad actividadCompleta = actividadesService.actividadCompletaPorNombre(recogerNombreActividad());
         System.out.println(actividadCompleta);
         return actividadCompleta;
 

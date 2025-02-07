@@ -13,7 +13,6 @@ import javafx.util.Duration;
 import org.example.App;
 import org.example.Model.Usuario;
 import org.example.Services.UserService;
-
 import java.io.IOException;
 import java.net.URL;
 import java.time.Instant;

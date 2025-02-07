@@ -1,20 +1,16 @@
 package org.example.View;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import org.example.App;
-import org.example.DAO.ActividadDAO;
-import org.example.DAO.HabitoDAO;
 import org.example.Model.Actividad;
 import org.example.Model.Habito;
 import org.example.Model.Recomendacion;
+import org.example.Services.ActividadServices;
 import org.example.Services.HabitoServices;
 import org.example.Utils.Session;
 import java.io.IOException;
@@ -36,24 +32,20 @@ public class MostrarHabitosController extends Controller implements Initializabl
     public void irAPantallaPrincipal() throws IOException {
         App.currentController.changeScene(Scenes.PAGINAPRINCIPAL,null);
     }
-
-
         @FXML
         private TableColumn<Habito, LocalDate> fecha;
-
-        ActividadDAO actividadDAO = new ActividadDAO();
+        ActividadServices actividadServices = new ActividadServices();
         HabitoServices habitoServices = new HabitoServices();
 
     @FXML
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Este método es invocado automáticamente cuando la escena es cargada
-        // Asegúrate de que habitoServices y actividadDAO estén correctamente inicializados
 
         // Obtener la lista de hábitos del usuario actual
         List<Habito> habitos = habitoServices.listarHabitos(Session.getInstancia().getUsuarioIniciado());
 
         for (Habito habito : habitos) {
-            Actividad actividad = actividadDAO.traerActividadPorIDHabito(habito);
+            Actividad actividad = actividadServices.traerActividadPorIdHabito(habito);
             if (actividad == null) continue;
 
             // Crear contenedor de tarjeta
@@ -108,8 +100,7 @@ public class MostrarHabitosController extends Controller implements Initializabl
 
             btnInfo.setOnAction(event -> {
                 // Obtener la lista de recomendaciones para el hábito
-                HabitoDAO habitoDAO = new HabitoDAO();
-                List<Recomendacion> recomendaciones = habitoDAO.traerRecomendacionesPorHabito(habito);
+                List<Recomendacion> recomendaciones = habitoServices.traerRecomendacionesPorHabito(habito);
 
                 if (recomendaciones == null || recomendaciones.isEmpty()) {
                     // Mostrar alerta si no hay recomendaciones

@@ -7,19 +7,18 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 import javafx.util.converter.BigDecimalStringConverter;
 import org.example.App;
-import org.example.DAO.ActividadDAO;
-import org.example.DAO.HuellaDAO;
-import org.example.DAO.UserDAO;
 import org.example.Model.Actividad;
 import org.example.Model.Huella;
 import org.example.Model.Recomendacion;
 import org.example.Model.Usuario;
+import org.example.Services.ActividadServices;
 import org.example.Services.HuellaService;
+import org.example.Services.UserService;
+import org.example.Utils.InformeUtils;
 import org.example.Utils.Session;
-
-import javax.swing.text.Document;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.net.URL;
@@ -53,14 +52,14 @@ public class MostrarHuellasController extends Controller  implements Initializab
     @FXML
     private TextArea mostrarImpacto;
 
+    HuellaService huellaService = new HuellaService();
+    ActividadServices actividadServices = new ActividadServices();
+    UserService userService = new UserService();
+
     @FXML
     public void irAPantallaPrincipal() throws IOException {
         App.currentController.changeScene(Scenes.PAGINAPRINCIPAL,null);
     }
-
-    HuellaDAO huellaDAO = new HuellaDAO();
-    HuellaService huellaService = new HuellaService();
-    ActividadDAO actividadDAO = new ActividadDAO();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -70,7 +69,7 @@ public class MostrarHuellasController extends Controller  implements Initializab
 
         ActividadNombre.setCellValueFactory(cellData -> {
             Huella huella = cellData.getValue();
-            Actividad actividad = actividadDAO.traerActividadPorID(huella);
+            Actividad actividad = actividadServices.traerActividadPorIdHuella(huella);
             return new SimpleStringProperty(actividad != null ? actividad.getNombre() : "Actividad no disponible");
         });
 
@@ -146,8 +145,7 @@ public class MostrarHuellasController extends Controller  implements Initializab
                 btnInfo.setOnAction(event -> {
                     Huella huellaSeleccionada = getTableView().getItems().get(getIndex());
                     if (huellaSeleccionada != null) {
-                        HuellaDAO huellaDAO = new HuellaDAO();
-                        List<Recomendacion> recomendaciones = huellaDAO.traerRecomendacionesPorHuella(huellaSeleccionada);
+                        List<Recomendacion> recomendaciones = huellaService.listarRecomendaciones(huellaSeleccionada);
 
                         if (recomendaciones == null || recomendaciones.isEmpty()) {
                             // Mostrar alerta si no hay recomendaciones
@@ -199,11 +197,10 @@ public class MostrarHuellasController extends Controller  implements Initializab
 
     private void mostrarImpacto() {
         StringBuilder sb = new StringBuilder();
-        UserDAO userDAO = new UserDAO();
-        List<Usuario> usuarios = userDAO.traerUsuarios();
+        List<Usuario> usuarios = userService.traerUsuarios();
 
         for (Usuario usuario : usuarios) {
-            Map<String, BigDecimal> impactos = huellaDAO.calcularImpactoPorCategoriaPorIDUsuario(usuario);
+            Map<String, BigDecimal> impactos = huellaService.calcularImpactoPorCategoriaPorIDUsuario(usuario);
 
             sb.append("Usuario: ").append(usuario.getNombre()).append("\n");
             for (String categoria : List.of("Transporte", "Energía", "Alimentación", "Residuos", "Agua")) {
@@ -234,8 +231,7 @@ public class MostrarHuellasController extends Controller  implements Initializab
 
     public Huella recogerDatosTableView(){
         Huella huella = huellaTable.getSelectionModel().getSelectedItem();
-        ActividadDAO actividadDAO = new ActividadDAO();
-        Actividad actividad = actividadDAO.traerActividadPorID(huella);
+        Actividad actividad = actividadServices.traerActividadPorIdHuella(huella);
         huella.setIdActividad(actividad);
         System.out.println(actividad);
         System.out.println(huella);
@@ -292,13 +288,34 @@ public class MostrarHuellasController extends Controller  implements Initializab
             default:
                 return;
         }
-        HuellaDAO huellaDAO = new HuellaDAO();
-        List<Object[]> impactos = huellaDAO.calcularImpactoAgrupadoPorActividad(Session.getInstancia().getUsuarioIniciado(), inicio, fin);
+        List<Object[]> impactos = huellaService.calcularImpactoAgrupadoPorActividad(Session.getInstancia().getUsuarioIniciado(), inicio, fin);
         mostrarImpactosAgrupados(impactos);
     }
 
+    @FXML
+    public void generarPDF() {
+        InformeUtils informeUtils = new InformeUtils();
 
+        try {
+            // Obtén el Stage desde el botón exportarPDF
+            Stage stage = (Stage) exportarPDF.getScene().getWindow();
 
+            // Supón que tienes acceso al usuario actual.
+            Usuario usuario = Session.getInstancia().getUsuarioIniciado(); // Reemplaza con tu lógica
+
+            informeUtils.generarInforme(usuario, stage);
+        } catch (IOException e) {
+            e.printStackTrace();
+            mostrarAlertaError("Error al generar el informe", e.getMessage());
+        }
+    }
+
+    private void mostrarAlertaError(String titulo, String mensaje) {
+        Alert alerta = new Alert(Alert.AlertType.ERROR);
+        alerta.setTitle(titulo);
+        alerta.setContentText(mensaje);
+        alerta.showAndWait();
+    }
 
 
 
