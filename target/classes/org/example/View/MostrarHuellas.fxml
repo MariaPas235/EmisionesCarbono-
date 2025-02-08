@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.View.MostrarHuellasController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="@registro.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.View.MostrarHuellasController">
    <children>
       <TableView fx:id="huellaTable" editable="true" layoutX="284.0" layoutY="222.0" prefHeight="277.0" prefWidth="1349.0">
         <columns>
@@ -26,24 +26,34 @@
             <Image url="@flechaAtrasVerde.png" />
          </image>
       </ImageView>
-      <ComboBox fx:id="filtroImpacto" layoutX="914.0" layoutY="650.0" onAction="#manejarSeleccionPeriodo" prefWidth="150.0" promptText="Periodo" />
-      <TextArea fx:id="mostrarImpacto" layoutX="833.0" layoutY="708.0" prefHeight="218.0" prefWidth="311.0" />
+      <ComboBox fx:id="filtroImpacto" layoutX="419.0" layoutY="650.0" onAction="#manejarSeleccionPeriodo" prefWidth="150.0" promptText="Periodo" />
+      <TextArea fx:id="mostrarImpacto" layoutX="338.0" layoutY="701.0" prefHeight="218.0" prefWidth="311.0" />
       <Text fill="#186b2a" layoutX="856.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mis Huellas" wrappingWidth="415.788330078125">
          <font>
             <Font name="Impact" size="57.0" />
          </font>
       </Text>
-      <Text fill="#186b2a" layoutX="779.0" layoutY="570.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Calcular Impacto por periodo">
+      <Text fill="#186b2a" layoutX="284.0" layoutY="575.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Calcular Impacto por periodo">
          <font>
             <Font name="Impact" size="35.0" />
          </font>
       </Text>
-      <Text layoutX="855.0" layoutY="616.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Seleccione en el desplegable un periodo">
+      <Text layoutX="360.0" layoutY="624.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Seleccione en el desplegable un periodo">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <TextArea fx:id="outputTextArea" layoutX="1341.0" layoutY="550.0" prefHeight="200.0" prefWidth="289.0" />
-      <Button fx:id="exportarPDF" layoutX="1460.0" layoutY="148.0" mnemonicParsing="false" onAction="#generarPDF" text="PDF" />
+      <TextArea fx:id="outputTextArea" layoutX="1167.0" layoutY="628.0" prefHeight="305.0" prefWidth="289.0" />
+      <Button fx:id="exportarPDF" layoutX="1404.0" layoutY="139.0" mnemonicParsing="false" onAction="#generarPDF" text="Descargar archivo" />
+      <Text fill="#186b2a" layoutX="991.0" layoutY="574.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Comparativa de impactos con otros usuarios">
+         <font>
+            <Font name="Impact" size="35.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="44.0" fitWidth="59.0" layoutX="1588.0" layoutY="139.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@pdf.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

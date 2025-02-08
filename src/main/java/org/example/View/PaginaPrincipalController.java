@@ -5,6 +5,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import org.example.App;
+import org.example.Utils.Session;
 
 import java.io.IOException;
 import java.net.URL;
@@ -21,6 +22,14 @@ public class PaginaPrincipalController extends Controller implements Initializab
     private Button RegistrarHabito;
     @FXML
     private Button misHabitos;
+    @FXML
+    private ImageView cerrar;
+
+    @FXML
+    public void CerrarSesión() throws IOException {
+        Session.getInstancia().logOut();
+        App.currentController.changeScene(Scenes.REGISTRO,null);
+    }
 
     @FXML
     public void irARegistrarHabitos() throws IOException {

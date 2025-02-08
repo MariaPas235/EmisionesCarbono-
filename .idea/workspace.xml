@@ -6,26 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="dd016665-ba96-443c-9bd5-174b4ff32788" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DAO/HabitoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/DAO/HabitoDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Services/ActividadServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Services/ActividadServices.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Services/CategoríaServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Services/CategoríaServices.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Services/HabitoServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Services/HabitoServices.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Services/HuellaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Services/HuellaService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Services/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/View/AppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/View/AppController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/View/MostrarHabitosController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/View/MostrarHabitosController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/View/MostrarHuellasController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/View/MostrarHuellasController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/View/PaginaPrincipalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/View/PaginaPrincipalController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/view/MostrarHabitos.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/view/MostrarHabitos.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/DAO/HabitoDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/DAO/HabitoDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Services/ActividadServices.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Services/ActividadServices.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Services/HuellaService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Services/HuellaService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/Services/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/Services/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/View/AppController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/View/AppController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/View/MostrarHabitosController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/View/MostrarHabitosController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/View/MostrarHuellasController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/View/MostrarHuellasController$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/View/MostrarHuellasController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/View/MostrarHuellasController$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/View/MostrarHuellasController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/View/MostrarHuellasController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/View/RegistrarHuellasController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/View/RegistrarHuellasController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/view/MostrarHuellas.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/view/MostrarHuellas.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/view/PaginaPrincipal.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/view/PaginaPrincipal.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/view/PerfilUsuario.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/view/PerfilUsuario.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/view/RegistrarHabitos.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/view/RegistrarHabitos.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/view/RegistrarHuellas.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/view/RegistrarHuellas.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/View/MostrarHabitos.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/View/MostrarHabitos.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,6 +134,8 @@
       <workItem from="1738913906108" duration="1270000" />
       <workItem from="1738915232778" duration="5179000" />
       <workItem from="1738951440529" duration="8890000" />
+      <workItem from="1738960557447" duration="202000" />
+      <workItem from="1739015833820" duration="1401000" />
     </task>
     <servers />
   </component>

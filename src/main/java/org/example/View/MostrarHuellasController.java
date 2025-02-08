@@ -205,7 +205,7 @@ public class MostrarHuellasController extends Controller  implements Initializab
             sb.append("Usuario: ").append(usuario.getNombre()).append("\n");
             for (String categoria : List.of("Transporte", "Energía", "Alimentación", "Residuos", "Agua")) {
                 BigDecimal impacto = impactos.getOrDefault(categoria, BigDecimal.ZERO);
-                sb.append(" - ").append(categoria).append(": ").append(impacto).append("\n");
+                sb.append(" - ").append(categoria).append(": ").append(impacto).append(" kg/CO2\n");
             }
             sb.append("\n");
         }
